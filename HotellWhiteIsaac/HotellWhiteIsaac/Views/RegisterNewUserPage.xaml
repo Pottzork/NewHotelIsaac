@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HotellWhiteIsaac.Views.RegisterNewUser"
+             xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels" 
+             xmlns:local="clr-namespace:HotellWhiteIsaac" 
+             xmlns:local1="clr-namespace:HotellWhiteIsaac.CustomRenderer"
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="false"
+             >
+    <!--BackgroundImageSource="BackgroundImage.jpg"   BAKGRUNDSBILD-->
+
+    
+    <ContentPage.BindingContext>
+        <vm:RegisterViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="0" BackgroundColor="LightGray">
+
+        <Grid>
+
+            
+            <!--HEADER-->
+            <StackLayout Padding="0" Margin="0">
+                <Grid>
+                    <Frame BackgroundColor="#f5737c" HeightRequest="145" HorizontalOptions="FillAndExpand" Padding="0">
+                        <Image Source="https://images.pexels.com/photos/60217/pexels-photo-60217.jpeg" 
+                           Aspect="AspectFill" Margin="0"/>
+                    </Frame>
+                    <Label Text="Hotel Isaac" FontSize="35" FontAttributes="Bold" 
+                           TextColor="White"  HorizontalTextAlignment="Center" Margin="0,20"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout Margin="20,70,20,0">
+                
+                <Frame BackgroundColor="White" HasShadow="True" HeightRequest="450" HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Label Text="SIGN IN" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+                        </StackLayout>
+                        
+                        <!--EMAIL ENTRY FIELD-->
+                        <StackLayout Margin="0,25,0,0">
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" 
+                                   Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="25" WidthRequest="25"
+                                           Padding="0" Margin="7">
+                                    </Frame>
+                                    <local1:MyCustomEntry Placeholder="Email" TextColor="#f5737c" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                </StackLayout>
+                            </Frame>
+
+                            
+                            <!--PASSWORD ENTRY FIELD-->
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" 
+                                   Padding="0" Margin="0,20,0,0" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="25" WidthRequest="25"
+                                           Padding="0" Margin="7">
+                                    </Frame>
+                                    <local1:MyCustomEntry Placeholder="Password" IsPassword="True" TextColor="#f5737c" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                </StackLayout>
+                            </Frame>
+
+                        </StackLayout>
+
+                        <!--REMEMBER ME AND FORGOT PASSWORD-->
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox IsChecked="False" Color="#f5737c"/>
+                            <Label Text="Remember me" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <Label Text="Forgot Password" HorizontalTextAlignment="End" TextColor="#f5737c" VerticalTextAlignment="Center"
+                                   HorizontalOptions="EndAndExpand" FontAttributes="Bold"/>
+                        </StackLayout>
+
+                        <Button Text="SIGN IN" BackgroundColor="#f5737c" TextColor="White" FontAttributes="Bold" CornerRadius="30"/>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Label Text="Still Not Connected?" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <Label Text="Sign Up" HorizontalTextAlignment="Center" TextColor="#f5737c" VerticalTextAlignment="Center"
+                                    FontAttributes="Bold"/>
+                        </StackLayout>
+
+                        <StackLayout>
+                            
+                            <Grid>
+                                <BoxView BackgroundColor="DarkGray" HeightRequest="1" Margin="45" HorizontalOptions="CenterAndExpand" WidthRequest="130"/>
+                                <Frame BackgroundColor="White" WidthRequest="50" Padding="0" Margin="0" HeightRequest="50" CornerRadius="30"
+                                       HasShadow="False" BorderColor="DarkGray" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    
+                                    <Label Text="OR" TextColor="DarkGray" FontSize="Small" HorizontalTextAlignment="Center" FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"/>
+                                </Frame>
+                            </Grid>
+                            <!--FACEBOOK AND TWITTERLOGO-->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <Frame BackgroundColor="Gray" WidthRequest="50" Padding="0" Margin="0" HeightRequest="50" CornerRadius="30"
+                                       HasShadow="False" BorderColor="DarkGray">
+                                    <Image Source="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-facebook-circle-512.png" Aspect="AspectFill" Margin="0"/>
+                                </Frame>
+                                <Frame BackgroundColor="LightGray" WidthRequest="50" Padding="0" Margin="0" HeightRequest="50" CornerRadius="30"
+                                       HasShadow="False" BorderColor="DarkGray">
+                                    <Image Source="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/google-icon.png" Aspect="AspectFill" Margin="0"/>
+                                </Frame>
+                            </StackLayout>
+                            
+                            
+                        </StackLayout>
+
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            
+        </Grid>
+
+    </StackLayout>
+</ContentPage>
+
+
+<!--<StackLayout x:Name="RegisterStackLayout" IsVisible="False">
+    <Label Text="Register" FontSize="45" HorizontalOptions="Center" FontAttributes="Bold" Margin="0,40,0,0"/>
+    <local:RoundedEntry Placeholder="Fullname" Margin="80,100,80,0"/>
+    <local:RoundedEntry Placeholder="Email" Keyboard="Email" Margin="80,5"/>
+    <local:RoundedEntry IsPassword="True" Placeholder="Enter Password" Margin="80,5"/>
+    <local:RoundedEntry IsPassword="True" Placeholder="Confirm Password" Margin="80,5"/>
+    <Button Text="Register" Margin="100,40,100,0"/>
+    <Label Text="Already have an account?" HorizontalOptions="Center"/>
+    <Label Text="Click Here" TextColor="Blue" HorizontalOptions="Center">
+        <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnAlreadyHaveAccount_Tapped"/>
+        </Label.GestureRecognizers>
+    </Label>
+</StackLayout>-->
+
+<!--<StackLayout x:Name="LoginStackLayout">
+    <Label Text="Sign in" FontSize="45" HorizontalOptions="Center" FontAttributes="Bold" Margin="0,40,0,0"/>
+    <local:RoundedEntry Placeholder="Email" Keyboard="Email" Margin="80,100,80,5"/>
+    <local:RoundedEntry IsPassword="True" Placeholder="Enter Password" Margin="80,5"/>
+    <Button Text="Sign in" Margin="100,40,100,0"/>
+    <Label Text="Don't have an account?" HorizontalOptions="Center"/>
+    <Label Text="Click Here to register" TextColor="Blue" HorizontalOptions="Center">
+        <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnDontHaveAccount_Tapped"/>
+        </Label.GestureRecognizers>
+    </Label>
+</StackLayout>-->
