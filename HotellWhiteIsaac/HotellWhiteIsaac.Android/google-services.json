@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "328398840050",
+    "firebase_url": "https://isaachotelnew.firebaseio.com",
+    "project_id": "isaachotelnew",
+    "storage_bucket": "isaachotelnew.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328398840050:android:cf8f4f68bf56555d32306b",
+        "android_client_info": {
+          "package_name": "com.companyname.hotellwhiteisaac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328398840050-m5uj663iv2cs669uscde1dnmrrhtaka1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChYKVyg6LTTLfpB6qp31YWe154tXn53lQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328398840050-m5uj663iv2cs669uscde1dnmrrhtaka1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

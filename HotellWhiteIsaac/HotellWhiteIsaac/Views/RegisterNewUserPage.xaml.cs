@@ -20,15 +20,15 @@ namespace HotellWhiteIsaac.Views
 
         private void OnAlreadyHaveAccount_Tapped(object sender, EventArgs e)
         {
-            //RegisterStackLayout.IsVisible = false;
-            //LoginStackLayout.IsVisible = true;
+            RegisterStackLayout.IsVisible = false;
+            LoginStackLayout.IsVisible = true;
 
         }
 
         private void OnDontHaveAccount_Tapped(object sender, EventArgs e)
         {
-            //RegisterStackLayout.IsVisible = true;
-            //LoginStackLayout.IsVisible = false;
+            RegisterStackLayout.IsVisible = true;
+            LoginStackLayout.IsVisible = false;
 
         }
     }
