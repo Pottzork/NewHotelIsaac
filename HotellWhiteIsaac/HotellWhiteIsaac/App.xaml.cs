@@ -14,7 +14,7 @@ namespace HotellWhiteIsaac
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new ProfilePage());
 
 
         }

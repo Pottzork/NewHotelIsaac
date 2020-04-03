@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
              mc:Ignorable="d"
              x:Class="HotellWhiteIsaac.Views.RegisterNewUser"
-             xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels" 
              xmlns:local="clr-namespace:HotellWhiteIsaac" 
              xmlns:local1="clr-namespace:HotellWhiteIsaac.CustomRenderer"
              Title="{Binding Title}"
@@ -13,14 +13,18 @@
              >
     <!--BackgroundImageSource="BackgroundImage.jpg"   BAKGRUNDSBILD-->
 
-    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:LoginVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <vm:RegisterViewModel />
     </ContentPage.BindingContext>
 
     <StackLayout Padding="0" BackgroundColor="LightGray">
 
-        <Grid>
+        <Grid BindingContext="{StaticResource vm}">
 
             
             <!--HEADER-->
@@ -36,7 +40,7 @@
             </StackLayout>
             
             <!--SIGN IN FORM-->
-            <StackLayout  x:Name="LoginStackLayout"  Margin="20,70,20,0" IsVisible="False">
+            <StackLayout  x:Name="LoginStackLayout"  Margin="20,70,20,0" IsVisible="True">
                 
                 <Frame BackgroundColor="White" 
                        HasShadow="True" 
@@ -60,14 +64,17 @@
                                    HorizontalOptions="FillAndExpand">
                                 
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="AliceBlue" 
+                                    <Frame BackgroundColor="Default" 
                                            CornerRadius="50" 
                                            HeightRequest="25" 
                                            WidthRequest="25"
                                            Padding="0" Margin="7">
+                                        <Image Source="https://www.pngitem.com/pimgs/m/24-248226_computer-icons-user-profile-clip-art-login-user.png"
+                                               Aspect="AspectFit" Margin="0"/>
                                     </Frame>
                                     <local1:MyCustomEntry 
-                                        Placeholder="Email" 
+                                        Placeholder="Username / Email" 
+                                        Text="{Binding Email, Mode=TwoWay}"
                                         Keyboard="Email" 
                                         TextColor="#f5737c" 
                                         HorizontalOptions="FillAndExpand" 
@@ -84,15 +91,18 @@
                                    CornerRadius="50" 
                                    HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="AliceBlue" 
+                                    <Frame BackgroundColor="Default" 
                                            CornerRadius="50" 
                                            HeightRequest="25" 
                                            WidthRequest="25"
                                            Padding="0" Margin="7">
+                                        <Image Source="https://vectorified.com/images/show-password-icon-1.png"
+                                               Aspect="AspectFit" Margin="0"/>
                                     </Frame>
                                     <local1:MyCustomEntry 
                                         Placeholder="Password" 
                                         IsPassword="True" 
+                                        Text="{Binding Password, Mode=TwoWay}"
                                         TextColor="#f5737c" 
                                         HorizontalOptions="FillAndExpand" 
                                         Margin="0,0,15,0"/>
@@ -117,7 +127,9 @@
                         </StackLayout>
 
                         <!--SIGN IN BUTTON-->
-                        <Button Text="SIGN IN" 
+                        <Button Text="SIGN IN"
+                                Command="{Binding LoginCommand}"
+                                CommandParameter="{Binding CanLogin}"
                                 BackgroundColor="#f5737c" 
                                 TextColor="White" 
                                 FontAttributes="Bold" 
@@ -206,7 +218,7 @@
             
             
             <!--REGISTER FORM-->
-            <StackLayout  x:Name="RegisterStackLayout"  Margin="20,70,20,0" IsVisible="True">
+            <StackLayout  x:Name="RegisterStackLayout"  Margin="20,70,20,0" IsVisible="False">
 
                 <Frame BackgroundColor="White" 
                        HasShadow="True" 
@@ -239,6 +251,7 @@
                                            Padding="0" Margin="7">
                                     </Frame>
                                     <local1:MyCustomEntry 
+                                        Text="{Binding Name, Mode=TwoWay}"
                                         Placeholder="Name" 
                                         TextColor="#f5737c" 
                                         HorizontalOptions="FillAndExpand" 
@@ -263,6 +276,7 @@
                                     </Frame>
                                     <local1:MyCustomEntry 
                                         Placeholder="Email" 
+                                        Text="{Binding Email, Mode=TwoWay}"
                                         Keyboard="Email" 
                                         TextColor="#f5737c" 
                                         HorizontalOptions="FillAndExpand" 
@@ -290,12 +304,13 @@
                                     <local1:MyCustomEntry 
                                         Placeholder="Password" 
                                         IsPassword="True" 
+                                        Text="{Binding Password, Mode=TwoWay}"
                                         TextColor="#f5737c" 
                                         HorizontalOptions="FillAndExpand" 
                                         Margin="0,0,15,0"/>
                                 </StackLayout>
                             </Frame>
-                            <!--PASSWORD ENTRY FIELD-->
+                            <!--CONFIRM PASSWORD ENTRY FIELD-->
                             <Frame BackgroundColor="Transparent" 
                                    BorderColor="DarkGray" 
                                    Padding="0" 
@@ -311,6 +326,7 @@
                                     </Frame>
                                     <local1:MyCustomEntry 
                                         Placeholder="Confirm Password" 
+                                        Text="{Binding ConfirmPassword, Mode=TwoWay}"
                                         IsPassword="True" 
                                         TextColor="#f5737c" 
                                         HorizontalOptions="FillAndExpand" 
@@ -320,8 +336,10 @@
 
                         </StackLayout>
 
-                        <!--SIGN IN BUTTON-->
+                        <!--Register BUTTON-->
                         <Button Text="Register" 
+                                Command="{Binding RegisterCommand}"
+                                CommandParameter="{Binding CanRegister}"
                                 BackgroundColor="#f5737c" 
                                 TextColor="White" 
                                 FontAttributes="Bold" 
