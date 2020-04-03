@@ -36,33 +36,64 @@
             </StackLayout>
             <StackLayout Margin="20,70,20,0">
                 
-                <Frame BackgroundColor="White" HasShadow="True" HeightRequest="450" HorizontalOptions="FillAndExpand">
+                <Frame BackgroundColor="White" 
+                       HasShadow="True" 
+                       HeightRequest="450" 
+                       HorizontalOptions="FillAndExpand">
                     <StackLayout>
                         <StackLayout HorizontalOptions="CenterAndExpand">
-                            <Label Text="SIGN IN" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="SIGN IN" 
+                                   TextColor="Black" 
+                                   FontSize="Medium" 
+                                   FontAttributes="Bold"/>
                         </StackLayout>
                         
                         <!--EMAIL ENTRY FIELD-->
                         <StackLayout Margin="0,25,0,0">
-                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" 
-                                   Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                            <Frame BackgroundColor="Transparent" 
+                                   BorderColor="DarkGray" 
+                                   Padding="0" 
+                                   Margin="0" 
+                                   CornerRadius="50" 
+                                   HorizontalOptions="FillAndExpand">
+                                
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="25" WidthRequest="25"
+                                    <Frame BackgroundColor="AliceBlue" 
+                                           CornerRadius="50" 
+                                           HeightRequest="25" 
+                                           WidthRequest="25"
                                            Padding="0" Margin="7">
                                     </Frame>
-                                    <local1:MyCustomEntry Placeholder="Email" TextColor="#f5737c" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    <local1:MyCustomEntry 
+                                        Placeholder="Email" 
+                                        Keyboard="Email" 
+                                        TextColor="#f5737c" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"/>
                                 </StackLayout>
                             </Frame>
 
                             
                             <!--PASSWORD ENTRY FIELD-->
-                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" 
-                                   Padding="0" Margin="0,20,0,0" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                            <Frame BackgroundColor="Transparent" 
+                                   BorderColor="DarkGray" 
+                                   Padding="0" 
+                                   Margin="0,20,0,0" 
+                                   CornerRadius="50" 
+                                   HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="25" WidthRequest="25"
+                                    <Frame BackgroundColor="AliceBlue" 
+                                           CornerRadius="50" 
+                                           HeightRequest="25" 
+                                           WidthRequest="25"
                                            Padding="0" Margin="7">
                                     </Frame>
-                                    <local1:MyCustomEntry Placeholder="Password" IsPassword="True" TextColor="#f5737c" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    <local1:MyCustomEntry 
+                                        Placeholder="Password" 
+                                        IsPassword="True" 
+                                        TextColor="#f5737c" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,15,0"/>
                                 </StackLayout>
                             </Frame>
 
@@ -71,41 +102,92 @@
                         <!--REMEMBER ME AND FORGOT PASSWORD-->
                         <StackLayout Orientation="Horizontal">
                             <CheckBox IsChecked="False" Color="#f5737c"/>
-                            <Label Text="Remember me" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                            <Label Text="Remember me" 
+                                   HorizontalTextAlignment="Start" 
+                                   VerticalTextAlignment="Center"/>
 
-                            <Label Text="Forgot Password" HorizontalTextAlignment="End" TextColor="#f5737c" VerticalTextAlignment="Center"
-                                   HorizontalOptions="EndAndExpand" FontAttributes="Bold"/>
+                            <Label Text="Forgot Password" 
+                                   HorizontalTextAlignment="End" 
+                                   TextColor="#f5737c" 
+                                   VerticalTextAlignment="Center"
+                                   HorizontalOptions="EndAndExpand" 
+                                   FontAttributes="Bold"/>
                         </StackLayout>
 
-                        <Button Text="SIGN IN" BackgroundColor="#f5737c" TextColor="White" FontAttributes="Bold" CornerRadius="30"/>
+                        <!--SIGN IN BUTTON-->
+                        <Button Text="SIGN IN" 
+                                BackgroundColor="#f5737c" 
+                                TextColor="White" 
+                                FontAttributes="Bold" 
+                                CornerRadius="30"/>
 
+                        <!--STILL NOT CONNECTED AND SIGN UP TEXT-->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Label Text="Still Not Connected?" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                            <Label Text="Still Not Connected?" 
+                                   HorizontalTextAlignment="Start" 
+                                   VerticalTextAlignment="Center"/>
 
-                            <Label Text="Sign Up" HorizontalTextAlignment="Center" TextColor="#f5737c" VerticalTextAlignment="Center"
+                            <Label Text="Sign Up" 
+                                    HorizontalTextAlignment="Center" 
+                                    TextColor="#f5737c" 
+                                    VerticalTextAlignment="Center"
                                     FontAttributes="Bold"/>
                         </StackLayout>
 
                         <StackLayout>
                             
+                            
+                            <!--OR DIVIDER BETWEEN SIGN IN OPTIONS-->
                             <Grid>
-                                <BoxView BackgroundColor="DarkGray" HeightRequest="1" Margin="45" HorizontalOptions="CenterAndExpand" WidthRequest="130"/>
-                                <Frame BackgroundColor="White" WidthRequest="50" Padding="0" Margin="0" HeightRequest="50" CornerRadius="30"
-                                       HasShadow="False" BorderColor="DarkGray" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <BoxView BackgroundColor="DarkGray" 
+                                         HeightRequest="1" 
+                                         Margin="45" 
+                                         HorizontalOptions="CenterAndExpand" 
+                                         WidthRequest="130"/>
+                                <Frame BackgroundColor="White" 
+                                       WidthRequest="50" 
+                                       Padding="0" 
+                                       Margin="0" 
+                                       HeightRequest="50" 
+                                       CornerRadius="30"
+                                       HasShadow="False" 
+                                       BorderColor="DarkGray" 
+                                       HorizontalOptions="CenterAndExpand" 
+                                       VerticalOptions="CenterAndExpand">
                                     
-                                    <Label Text="OR" TextColor="DarkGray" FontSize="Small" HorizontalTextAlignment="Center" FontAttributes="Bold"
+                                    <Label Text="OR" 
+                                           TextColor="DarkGray" 
+                                           FontSize="Small" 
+                                           HorizontalTextAlignment="Center" 
+                                           FontAttributes="Bold"
                                            VerticalTextAlignment="Center"/>
                                 </Frame>
                             </Grid>
-                            <!--FACEBOOK AND TWITTERLOGO-->
+                            <!--FACEBOOK AND GOOGLE SIGN IN ICONS-->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Frame BackgroundColor="Gray" WidthRequest="50" Padding="0" Margin="0" HeightRequest="50" CornerRadius="30"
-                                       HasShadow="False" BorderColor="DarkGray">
-                                    <Image Source="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-facebook-circle-512.png" Aspect="AspectFill" Margin="0"/>
+                                <Frame BackgroundColor="Gray" 
+                                       WidthRequest="50" 
+                                       Padding="0" Margin="0" 
+                                       HeightRequest="50" 
+                                       CornerRadius="30"
+                                       HasShadow="False" 
+                                       BorderColor="DarkGray">
+                                    <Image 
+                                        Source="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-facebook-circle-512.png" 
+                                        Aspect="AspectFill" 
+                                        Margin="0"/>
                                 </Frame>
-                                <Frame BackgroundColor="LightGray" WidthRequest="50" Padding="0" Margin="0" HeightRequest="50" CornerRadius="30"
-                                       HasShadow="False" BorderColor="DarkGray">
-                                    <Image Source="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/google-icon.png" Aspect="AspectFill" Margin="0"/>
+                                <Frame BackgroundColor="LightGray" 
+                                       WidthRequest="50" 
+                                       Padding="0" 
+                                       Margin="0" 
+                                       HeightRequest="50" 
+                                       CornerRadius="30"
+                                       HasShadow="False" 
+                                       BorderColor="DarkGray">
+                                    <Image Source="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/google-icon.png" 
+                                           Aspect="AspectFill"
+                                           Margin="0"/>
                                 </Frame>
                             </StackLayout>
                             
