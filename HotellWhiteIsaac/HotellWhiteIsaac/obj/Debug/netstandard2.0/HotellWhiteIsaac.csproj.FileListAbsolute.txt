@@ -19,3 +19,5 @@ C:\Users\andre\source\repos\HotellWhiteIsaac\HotellWhiteIsaac\HotellWhiteIsaac\o
 C:\Users\andre\source\repos\HotellWhiteIsaac\HotellWhiteIsaac\HotellWhiteIsaac\obj\Debug\netstandard2.0\HotellWhiteIsaac.pdb
 C:\Users\andre\source\repos\HotellWhiteIsaac\HotellWhiteIsaac\HotellWhiteIsaac\obj\Debug\netstandard2.0\HotellWhiteIsaac.csprojAssemblyReference.cache
 C:\Users\andre\source\repos\HotellWhiteIsaac\HotellWhiteIsaac\HotellWhiteIsaac\obj\Debug\netstandard2.0\Views\ProfilePage.xaml.g.cs
+C:\Users\andre\source\repos\HotellWhiteIsaac\HotellWhiteIsaac\HotellWhiteIsaac\obj\Debug\netstandard2.0\Views\NewProfilePage.xaml.g.cs
+C:\Users\andre\source\repos\HotellWhiteIsaac\HotellWhiteIsaac\HotellWhiteIsaac\obj\Debug\netstandard2.0\Views\ProfileDetailsPage.xaml.g.cs

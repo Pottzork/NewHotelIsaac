@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
+             mc:Ignorable="d"
+             x:Class="HotellWhiteIsaac.Views.ProfileDetailsPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:ProfileDetailsVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Update"
+                     BindingContext="{StaticResource vm}"
+                     Command="{Binding UpdateCommand}"
+                     CommandParameter="{Binding Name}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Margin="16"
+                     BindingContext="{StaticResource vm}">
+            <Entry Placeholder="Profile Name"
+                   Text="{Binding Name, Mode=TwoWay}"/>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand">
+                <Label Text="Is this profile still active?"
+                       VerticalOptions="Center"/>
+                <CheckBox IsChecked="{Binding IsActive, Mode=TwoWay}"/>
+            </StackLayout>
+            <Button Text="Delete"
+                    Command="{Binding DeleteCommand}"
+                    BackgroundColor="IndianRed"
+                    TextColor="White"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
