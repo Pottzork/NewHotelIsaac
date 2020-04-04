@@ -11,10 +11,13 @@
 *.sln.docstates
 *.suo
 *.user
+obj/
+bin/
+Debug/
 _ReSharper.*
 bin
 obj
-packages
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
