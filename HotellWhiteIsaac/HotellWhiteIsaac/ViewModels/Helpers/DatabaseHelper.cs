@@ -10,15 +10,22 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
 
     public interface IFirestore
     {
+        //Profile hantering
         bool InsertProfile(Profile profile);
         Task<bool> DeleteProfile(Profile profile);
         Task<bool> UpdateProfile(Profile profile);
         Task<IList<Profile>> ReadProfile();
+        //-----------------------------------
+        //Booking hantering
+  
     }
     public class DatabaseHelper 
     {
         private static IFirestore firestore = DependencyService.Get<IFirestore>();
 
+        //              Här hanteras Profile
+        //-----------------------------------------------------------------------
+       
         public static Task<bool> DeleteProfile(Profile profile)
         {
             return firestore.DeleteProfile(profile);
@@ -38,5 +45,10 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
         {
             return firestore.UpdateProfile(profile);
         }
+
+        //              Här hanteras Booking
+        //-----------------------------------------------------------------------
+
+
     }
 }
