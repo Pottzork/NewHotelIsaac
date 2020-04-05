@@ -21,7 +21,20 @@
     </ContentPage.ToolbarItems>
     <Grid>
 
-    <!--HEADER-->
+
+            <ListView BindingContext="{StaticResource vm}"
+                ItemsSource="{Binding Profiles}"
+                SelectedItem="{Binding SelectedProfile, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}"
+                              Detail="{Binding SubscribedDate}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        <!--HEADER-->
     <StackLayout Padding="0" Margin="0">
         <Grid>
             <Frame BackgroundColor="#f5737c" HeightRequest="110" HorizontalOptions="FillAndExpand" Padding="0"/>
@@ -61,15 +74,3 @@
 
     
 <!--DETTA LISTAR ALLA PROFILE/USERS-->
-<!--<ContentPage.Content>
-    <ListView BindingContext="{StaticResource vm}"
-                ItemsSource="{Binding Profiles}"
-                SelectedItem="{Binding SelectedProfile, Mode=TwoWay}">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Name}"
-                              Detail="{Binding SubscribedDate}"/>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-</ContentPage.Content>-->

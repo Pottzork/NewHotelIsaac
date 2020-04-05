@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotellWhiteIsaac.ViewModels;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,9 +11,19 @@ namespace HotellWhiteIsaac.Views
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
+
+        RoomsVM vm;
         public AboutPage()
         {
             InitializeComponent();
+            vm = Resources["vm"] as RoomsVM;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            vm.ReadRooms();
         }
     }
 }

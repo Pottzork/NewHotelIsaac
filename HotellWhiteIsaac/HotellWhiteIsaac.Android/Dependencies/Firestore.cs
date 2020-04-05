@@ -23,6 +23,7 @@ namespace HotellWhiteIsaac.Droid.Dependencies
     {
         //Hanterar profiles
         List<Profile> profiles;
+        List<Room> rooms;
         bool hasReadProfiles = false;
 
         public Firestore()
@@ -31,6 +32,8 @@ namespace HotellWhiteIsaac.Droid.Dependencies
             profiles = new List<Profile>();
             //Booking lista 
             bookings = new List<Booking>();
+
+            rooms = new List<Room>();
         }
         public async Task<bool> DeleteProfile(Profile profile)
         {
@@ -103,6 +106,26 @@ namespace HotellWhiteIsaac.Droid.Dependencies
                 return false;
             }
         }
+        bool hasReadRooms = false;
+        public async Task<IList<Room>> ReadRoom()
+        {
+            hasReadRooms = false;
+            var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("rooms");
+            //kanske hämtar allt i collection??????????
+            var query = collection;
+            query.Get().AddOnCompleteListener(this);
+
+            for (int i = 0; i < 35; i++)
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                if (hasReadRooms)
+                {
+                    break;
+                }
+            }
+            return rooms;
+
+        }
 
         //Date kan implementeras i både booking och profile
         private static Date DateTimeToNativeDate(DateTime date)
@@ -124,26 +147,35 @@ namespace HotellWhiteIsaac.Droid.Dependencies
             {
                 var documents = (QuerySnapshot)task.Result;
 
-                profiles.Clear();
+                //profiles.Clear();
+
                 foreach (var doc in documents.Documents)
                 {
-                    Profile profile = new Profile
+                    //Profile profile = new Profile
+                    //{
+                    //    IsActive = (bool)doc.Get("isActive"),
+                    //    Name = doc.Get("name").ToString(),
+                    //    UserId = doc.Get("author").ToString(),
+                    //    SubscribedDate = NativeDateToDateTime(doc.Get("subscribedDate") as Date),
+                    //    Id = doc.Id
+                    //};
+
+                    Room room = new Room
                     {
-                        IsActive = (bool)doc.Get("isActive"),
-                        Name = doc.Get("name").ToString(),
-                        UserId = doc.Get("author").ToString(),
-                        SubscribedDate = NativeDateToDateTime(doc.Get("subscribedDate") as Date),
-                        Id = doc.Id
+                        RoomType = doc.Get("roomType").ToString()
                     };
 
-                    profiles.Add(profile);
+                    //profiles.Add(profile);
+                    rooms.Add(room);
                 }
             }
             else
             {
-                profiles.Clear();
+                rooms.Clear();
+                //profiles.Clear();
             }
             hasReadProfiles = true;
+            hasReadRooms = true;
         }
 
         //Hanterar Booking
@@ -264,8 +296,8 @@ namespace HotellWhiteIsaac.Droid.Dependencies
         }
 
         //Hanterar room funktioner
-        List<Room> rooms;
-        bool hasReadRooms = false;
+    
+        
 
         //systemet hantera uppdatering av rummet efter varje gång någon bokar eller städar rummet
         public async Task<bool> UpdateRoom(Room room)
@@ -284,25 +316,7 @@ namespace HotellWhiteIsaac.Droid.Dependencies
         }
 
         //se alla rum som admin
-        public async Task<IList<Room>> ReadAllRooms()
-        {
-            hasReadRooms = false;
-            var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("rooms");
-            //kanske hämtar allt i collection??????????
-            var query = collection;
-            query.Get().AddOnCompleteListener(this);
 
-            for (int i = 0; i < 25; i++)
-            {
-                await System.Threading.Tasks.Task.Delay(100);
-                if (hasReadRooms)
-                {
-                    break;
-                }
-            }
-            return rooms;
-
-        }
         //läsa in alla rum som är tillgängliga
         public async Task<IList<Room>> ReadAvailableRooms()
         {
@@ -320,6 +334,8 @@ namespace HotellWhiteIsaac.Droid.Dependencies
             }
             return rooms;
         }
+
+
 
     }
 }

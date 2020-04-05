@@ -12,16 +12,19 @@
             <vm:RoomsVM x:Key="vm"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout>
-    <ListView BindingContext="{StaticResource vm}"
-              ItemsSource="{Binding Rooms}">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding RoomType}"/>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-        
-    </ListView>
-    </StackLayout>
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView BindingContext="{StaticResource vm}"
+                      ItemsSource="{Binding Rooms}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding RoomType}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

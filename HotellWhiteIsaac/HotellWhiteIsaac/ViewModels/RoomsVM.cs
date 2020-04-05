@@ -26,6 +26,15 @@ namespace HotellWhiteIsaac.ViewModels
 			//Insert ID  Firestore/db.collection('rooms').doc('room1-10').get();
 
 		}
+		public ObservableCollection<Room> Rooms { get; set; }
+
+		public RoomsVM()
+		{
+			//UpdateRoomCommand = new Command(UpdateRoom);
+			Rooms = new ObservableCollection<Room>();
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		private string id;
 
@@ -40,7 +49,9 @@ namespace HotellWhiteIsaac.ViewModels
 		public string RoomType
 		{
 			get { return roomType; }
-			set { roomType = value; }
+			set { 
+				Room.RoomType = roomType; 
+			}
 		}
 		private float cost;
 
@@ -79,17 +90,10 @@ namespace HotellWhiteIsaac.ViewModels
 		public ICommand UpdateRoomCommand { get; set; }
 
 
-		public event PropertyChangedEventHandler PropertyChanged;
 
-		public RoomsVM()
-		{
-			UpdateRoomCommand = new Command(UpdateRoom);
-		}
-
-		public ObservableCollection<Room> Rooms { get; set; }
 		public async void ReadRooms()
 		{
-			var rooms = await DatabaseHelper.ReadAllRooms();
+			var rooms = await DatabaseHelper.ReadRoom();
 
 			Rooms.Clear();
 			foreach (var r in rooms)

@@ -24,7 +24,7 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
         //-----------------------------------
         //Room hantering
         Task<bool> UpdateRoom(Room room);
-        Task<IList<Room>> ReadAllRooms();
+        Task<IList<Room>> ReadRoom();
         Task<IList<Room>> ReadAvailableRooms();
 
         
@@ -87,9 +87,9 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
         {
             return firestore.UpdateRoom(room);
         }
-       public static Task<IList<Room>> ReadAllRooms()
+       public static Task<IList<Room>> ReadRoom()
         {
-            return firestore.ReadAllRooms();
+            return firestore.ReadRoom();
         }
        public static Task<IList<Room>> ReadAvailableRooms()
         {
