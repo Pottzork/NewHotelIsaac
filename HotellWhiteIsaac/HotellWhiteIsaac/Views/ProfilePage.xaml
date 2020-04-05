@@ -7,6 +7,7 @@
              mc:Ignorable="d"
              x:Class="HotellWhiteIsaac.Views.ProfilePage"
              Title="My profile"
+             NavigationPage.HasNavigationBar="false"
              >
 
     <ContentPage.Resources>

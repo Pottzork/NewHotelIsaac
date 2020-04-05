@@ -13,13 +13,13 @@ namespace HotellWhiteIsaac.Views
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Room Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Item = new Room
             {
                 Text = "Item name",
                 Description = "This is an item description."

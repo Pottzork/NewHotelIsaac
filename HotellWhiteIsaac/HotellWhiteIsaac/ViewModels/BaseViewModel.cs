@@ -12,7 +12,7 @@ namespace HotellWhiteIsaac.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Room> DataStore => DependencyService.Get<IDataStore<Room>>();
 
         bool isBusy = false;
         public bool IsBusy

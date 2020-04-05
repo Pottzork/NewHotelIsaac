@@ -26,7 +26,7 @@ namespace HotellWhiteIsaac.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Room
             {
                 Text = "Item 1",
                 Description = "This is an item description."

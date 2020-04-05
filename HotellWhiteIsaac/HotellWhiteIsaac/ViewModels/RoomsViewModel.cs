@@ -12,18 +12,18 @@ namespace HotellWhiteIsaac.ViewModels
 {
     public class RoomsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Room> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public RoomsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<Room>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, Room>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Item;
+                var newItem = item as Room;
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
             });
