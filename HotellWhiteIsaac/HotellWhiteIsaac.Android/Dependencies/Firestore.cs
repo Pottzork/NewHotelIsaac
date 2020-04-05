@@ -21,13 +21,16 @@ namespace HotellWhiteIsaac.Droid.Dependencies
 {
     class Firestore : Java.Lang.Object, IFirestore, IOnCompleteListener
     {
-        
+        //Hanterar profiles
         List<Profile> profiles;
         bool hasReadProfiles = false;
 
         public Firestore()
         {
+            //Profile lista
             profiles = new List<Profile>();
+            //Booking lista 
+            bookings = new List<Booking>();
         }
         public async Task<bool> DeleteProfile(Profile profile)
         {
@@ -101,6 +104,7 @@ namespace HotellWhiteIsaac.Droid.Dependencies
             }
         }
 
+        //Date kan implementeras i både booking och profile
         private static Date DateTimeToNativeDate(DateTime date)
         {
             long dateTimeUtcAsMilliseconds = (long)date.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
@@ -141,5 +145,124 @@ namespace HotellWhiteIsaac.Droid.Dependencies
             }
             hasReadProfiles = true;
         }
+
+        //Hanterar Booking
+        List<Booking> bookings;
+        bool hasReadBookings = false;
+
+            //Tar bort bokningar, kommer implementeras i Staff-Sida INTE customer/user
+        public async Task<bool> DeleteBooking(Booking booking)
+        {
+
+            try
+            {
+                var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("bookings");
+                collection.Document(booking.Id).Delete();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
+        //Funktion för att användaren ska kunna sätta in en bokning / Notera att detta hade kunnat göras för Staff också i senare version
+        public bool InsertBooking(Booking booking)
+        {
+            try
+            {
+                var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("bookings");
+                var bookingDocument = new Dictionary<string, Java.Lang.Object>
+            {
+                {"author", Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid },
+                {"name", booking.Name },
+                {"totalDays", booking.TotalDays },
+                {"extraBed", booking.ExtraBed },
+                {"roomNumber", booking.RoomNumber},
+                {"totalPrice", booking.TotalPrice}
+            };
+                collection.Add(bookingDocument);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
+        //Denna funktionen ska både customer och staff ha, just nu ser bara Customer sin egna
+        //ska implementera funktion så staff kan läsa av ALLA bokningar också
+        public async Task<IList<Booking>> ReadBooking()
+        {
+            hasReadBookings = false;
+            var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("bookings");
+
+            //Gör så att customer kan se sina egna bokningar
+            var query = collection.WhereEqualTo("author", Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Uid);
+            query.Get().AddOnCompleteListener(this);
+
+            //vad ska vi ha för length?
+
+            for (int i = 0; i < 25; i++)
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                if (hasReadBookings)
+                {
+                    break;
+                }
+             
+            }
+            return bookings;
+        }
+
+        //Hanteras av Staff/admin
+        public async Task<bool> UpdateBooking(Booking booking)
+        {
+            try
+            {
+                var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("bookings");
+                collection.Document(booking.Id).Update("name", booking.Name, "totalDays", booking.TotalDays, 
+                    "extraBed", booking.ExtraBed, "roomNumber", booking.RoomNumber, "totalPrice", booking.TotalPrice);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
+        public void OnBookingComplete(Android.Gms.Tasks.Task task)
+        {
+            if (task.IsSuccessful)
+            {
+                var documents = (QuerySnapshot)task.Result;
+
+                bookings.Clear();
+                foreach (var doc in documents.Documents)
+                {
+                    Booking booking = new Booking
+                    {
+                        Name = doc.Get("name").ToString(),
+                        TotalDays = (int)doc.Get("totalDays"),
+                        ExtraBed = (bool)doc.Get("extraBed"),
+                        RoomNumber = (int)doc.Get("roomNumber"),
+                        TotalPrice = (float)doc.Get("totalPrice"),
+                        Id = doc.Id, 
+                        BookDate = NativeDateToDateTime(doc.Get("bookDate") as Date)
+                    };
+                    bookings.Add(booking);
+                }
+            }
+            else
+            {
+                bookings.Clear();
+            }
+            hasReadBookings = true;
+        }
+
+
     }
 }

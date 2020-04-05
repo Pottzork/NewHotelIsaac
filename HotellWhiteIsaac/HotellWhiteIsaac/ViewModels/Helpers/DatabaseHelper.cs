@@ -10,15 +10,27 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
 
     public interface IFirestore
     {
+        //Profile hantering
         bool InsertProfile(Profile profile);
         Task<bool> DeleteProfile(Profile profile);
         Task<bool> UpdateProfile(Profile profile);
         Task<IList<Profile>> ReadProfile();
+        //-----------------------------------
+        //Booking hantering
+        bool InsertBooking(Booking booking);
+        Task<bool> DeleteBooking(Booking booking);
+        Task<bool> UpdateBooking(Booking booking);
+        Task<IList<Booking>> ReadBooking();
+        
+  
     }
     public class DatabaseHelper 
     {
         private static IFirestore firestore = DependencyService.Get<IFirestore>();
 
+        //              Här hanteras Profile
+        //-----------------------------------------------------------------------
+       
         public static Task<bool> DeleteProfile(Profile profile)
         {
             return firestore.DeleteProfile(profile);
@@ -37,6 +49,28 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
         public static Task<bool> UpdateProfile(Profile profile)
         {
             return firestore.UpdateProfile(profile);
+        }
+
+        //              Här hanteras Booking
+        //-----------------------------------------------------------------------
+
+        public static Task<bool> DeleteBooking(Booking booking)
+        {
+            return firestore.DeleteBooking(booking);
+        }
+        public static bool InsertBooking(Booking booking)
+        {
+            return firestore.InsertBooking(booking);
+        }
+
+        public static Task<IList<Booking>> ReadBooking()
+        {
+            return firestore.ReadBooking();
+        }
+        
+        public static Task<bool> UpdateBooking(Booking booking)
+        {
+            return firestore.UpdateBooking(booking);
         }
     }
 }
