@@ -15,7 +15,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <views:NewBookingPage />
+                <views:AboutPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

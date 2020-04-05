@@ -263,6 +263,63 @@ namespace HotellWhiteIsaac.Droid.Dependencies
             hasReadBookings = true;
         }
 
+        //Hanterar room funktioner
+        List<Room> rooms;
+        bool hasReadRooms = false;
+
+        //systemet hantera uppdatering av rummet efter varje gång någon bokar eller städar rummet
+        public async Task<bool> UpdateRoom(Room room)
+        {
+            try
+            {
+                var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("rooms");
+                collection.Document(room.Id).Update("isAvailable", room.IsAvailable, "extraBed", room.ExtraBed, "isCleaned", room.IsCleaned);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+               return false;
+            }
+        }
+
+        //se alla rum som admin
+        public async Task<IList<Room>> ReadAllRooms()
+        {
+            hasReadRooms = false;
+            var collection = Firebase.Firestore.FirebaseFirestore.Instance.Collection("rooms");
+            //kanske hämtar allt i collection??????????
+            var query = collection;
+            query.Get().AddOnCompleteListener(this);
+
+            for (int i = 0; i < 25; i++)
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                if (hasReadRooms)
+                {
+                    break;
+                }
+            }
+            return rooms;
+
+        }
+        //läsa in alla rum som är tillgängliga
+        public async Task<IList<Room>> ReadAvailableRooms()
+        {
+            hasReadRooms = false;
+            //hämtar från collection där IsAvailable är true
+            var query = Firebase.Firestore.FirebaseFirestore.Instance.Collection("rooms").WhereEqualTo("isAvailable", true);
+            query.Get().AddOnCompleteListener(this);
+            for (int i = 0; i < 25; i++)
+            {
+                await System.Threading.Tasks.Task.Delay(100);
+                if (hasReadBookings)
+                {
+                    break;
+                }
+            }
+            return rooms;
+        }
 
     }
 }

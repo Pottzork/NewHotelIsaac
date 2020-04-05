@@ -21,6 +21,12 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
         Task<bool> DeleteBooking(Booking booking);
         Task<bool> UpdateBooking(Booking booking);
         Task<IList<Booking>> ReadBooking();
+        //-----------------------------------
+        //Room hantering
+        Task<bool> UpdateRoom(Room room);
+        Task<IList<Room>> ReadAllRooms();
+        Task<IList<Room>> ReadAvailableRooms();
+
         
   
     }
@@ -72,5 +78,23 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
         {
             return firestore.UpdateBooking(booking);
         }
+
+
+        //              Här hanteras Room
+        //-----------------------------------------------------------------------
+
+        public static Task<bool> UpdateRoom(Room room)
+        {
+            return firestore.UpdateRoom(room);
+        }
+       public static Task<IList<Room>> ReadAllRooms()
+        {
+            return firestore.ReadAllRooms();
+        }
+       public static Task<IList<Room>> ReadAvailableRooms()
+        {
+            return firestore.ReadAvailableRooms();
+        }
+
     }
 }
