@@ -5,19 +5,40 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="HotellWhiteIsaac.Views.ItemDetailPage"
-             Title="{Binding Title}"
-             BackgroundImageSource="BackgroundImage.jpg">
+             Title="{Binding Title}">
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="30"/>
+    <Grid>
+            <!--HEADER-->
+        <StackLayout Padding="0" Margin="0">
+            <Grid>
+                <Frame BackgroundColor="#f5737c" HeightRequest="110" HorizontalOptions="FillAndExpand" Padding="0"/>
+                <Label Text="Hotel Isaac" FontSize="35" FontAttributes="Bold" 
+                               TextColor="White"  HorizontalTextAlignment="Center" Margin="0,20"/>
+                <Label Text="Room Details" FontSize="30" FontAttributes="Italic" 
+                               TextColor="White"  HorizontalTextAlignment="Center" Margin="0,55,0,0"/>
+            </Grid>
+        </StackLayout>
+        
+        
+        <!--ROOM DETAILS INFO-->
+        <StackLayout Spacing="10" Padding="40" Margin="0,90,0,0">
+            <Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="30"/>
 
-        <Label Text="Description:" FontSize="Large" />
-        <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="18"/>
+            <Label Text="Description:" FontSize="Large" />
+            <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="18"/>
 
-        <Image Source="roomExample.jpg"/>
-        <Button Text="Book Now" FontAttributes="Bold" 
-                Margin="50" BackgroundColor="White" 
-                CornerRadius="10"/>
-    </StackLayout>
+            <Image Source="roomExample.jpg" Margin="0,0,0,15"/>
+            
+            <!--BOOK BUTTON-->
+            <Button x:Name="ConfirmRoomButton"
+                    Text="Book Now" 
+                    FontAttributes="Bold" 
+                    BackgroundColor="#f5737c" 
+                    CornerRadius="20"
+                    TextColor="white"
+                    Clicked="ConfirmRoomButton_Clicked"
+                    />
+        </StackLayout>
+    </Grid>
     
 </ContentPage>

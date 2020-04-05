@@ -12,62 +12,104 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
     </ContentPage.ToolbarItems>
-    
-    <ContentPage.Content>
-        <ListView>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ContentPage.Content>
 
+    <StackLayout Padding="0">
+    <Grid>
+            <!--HEADER-->
+            <StackLayout Padding="0" Margin="0">
+                <Grid>
+                    <Frame BackgroundColor="#f5737c" HeightRequest="110" HorizontalOptions="FillAndExpand" Padding="0"/>
+                    <Label Text="Hotel Isaac" FontSize="35" FontAttributes="Bold" 
+                           TextColor="White"  HorizontalTextAlignment="Center" Margin="0,20"/>
+                    <Label Text="Rooms" FontSize="30" FontAttributes="Italic" 
+                           TextColor="White"  HorizontalTextAlignment="Center" Margin="0,55,0,0"/>
+                </Grid>
+            </StackLayout>
+
+        <StackLayout Margin="20,70,20,0">
+
+
+                <!--Check IN and Out fields-->
+                <StackLayout x:Name="PickDateStackLayout">
+                    <StackLayout Orientation="Vertical" Margin="0,50,0,0">
+                        <Label Text="Check in:" FontAttributes="Bold"/>
+                        <DatePicker x:Name="CheckInDate"
+                                   Format="D"
+                                   Margin="10,0,0,10"/>
+                                   <!--DateSelected="CheckInDate_DateSelected"-->
+                        <Label Text="Check out:" FontAttributes="Bold"/>
+                        <DatePicker x:Name="CheckOutDate"
+                                    Format="D"
+                                    Margin="10,0,0,10"/>
+                        <!--DateSelected="CheckOutDate_DateSelected"/>-->
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Total nights: "/>
+                            <Label x:Name="TotalNightsLabel"
+                       Text=""/>
+
+
+                        </StackLayout>
+                        <Button x:Name="ShowAvailableRommsButton"
+                                Text="Show Available Rooms"
+                                CornerRadius="20"
+                                TextColor="White"
+                                BackgroundColor="#f5737c"
+                                Clicked="ShowAvailableRommsButton_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Margin="10,40,20,0"
+                         x:Name="RoomsStackLayout" IsVisible="False">
+
+                <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
+                    <CollectionView x:Name="ItemsCollectionView"
+                        ItemsSource="{Binding Items}">
+                    <d:CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Room 1</x:String>
+                            <x:String>Room 2</x:String>
+                            <x:String>Room 3</x:String>
+                            <x:String>Room 4</x:String>
+                            <x:String>Room 5</x:String>
+                            <x:String>Room 6</x:String>
+                        </x:Array>
+                    </d:CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Text}" 
+                                        d:Text="{Binding .}"
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16" />
+                                <Label Text="{Binding Description}" 
+                                        d:Text="Item descripton"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="13" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+            </StackLayout>
+        </StackLayout>
+</Grid>
+
+</StackLayout>
 </ContentPage>
 
+<!--<ContentPage.Content>
+    <ListView>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell/>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage.Content>-->
 
-
-
-<!--<StackLayout>
-    <Label Text="Hotel Isaac" FontSize="45"
-               FontAttributes="Bold"
-               HorizontalOptions="Center" Margin="0,20"/>
-    <Label Text="Select a room to view more information" HorizontalOptions="Center"/>
-    <BoxView WidthRequest="1" HeightRequest="1" BackgroundColor="Black"/>
-
-
-    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
-        <CollectionView x:Name="ItemsCollectionView"
-                ItemsSource="{Binding Items}">
-            <d:CollectionView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Room 1</x:String>
-                    <x:String>Room 2</x:String>
-                    <x:String>Room 3</x:String>
-                    <x:String>Room 4</x:String>
-                    <x:String>Room 5</x:String>
-                    <x:String>Room 6</x:String>
-                </x:Array>
-            </d:CollectionView.ItemsSource>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10">
-                        <Label Text="{Binding Text}" 
-                                d:Text="{Binding .}"
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                        <Label Text="{Binding Description}" 
-                                d:Text="Item descripton"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
-</StackLayout>-->

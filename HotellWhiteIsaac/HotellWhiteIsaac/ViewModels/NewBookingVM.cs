@@ -1,5 +1,6 @@
 ﻿using HotellWhiteIsaac.Models;
 using HotellWhiteIsaac.ViewModels.Helpers;
+using HotellWhiteIsaac.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -110,7 +111,8 @@ namespace HotellWhiteIsaac.ViewModels
 
             if (result)
             {
-                App.Current.MainPage.Navigation.PopAsync();
+                App.Current.MainPage.DisplayAlert("Success!", "Thank you for your order\nYou will now be redirected to your profile page.", "ok");
+                App.Current.MainPage.Navigation.PushAsync(new ProfilePage());
             }
             else
             {

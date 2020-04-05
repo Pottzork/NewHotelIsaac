@@ -21,7 +21,7 @@ namespace HotellWhiteIsaac.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Register, Title="Register" },
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
+                new HomeMenuItem {Id = MenuItemType.Browse, Title="My Account" },
                 new HomeMenuItem {Id = MenuItemType.Signin, Title="Sign in" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" }
 

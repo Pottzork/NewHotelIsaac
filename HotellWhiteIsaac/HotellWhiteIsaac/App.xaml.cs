@@ -14,7 +14,11 @@ namespace HotellWhiteIsaac
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new NewBookingPage());
+            MainPage = new NavigationPage(new ProfilePage())
+            {
+                BarBackgroundColor = Color.FromHex("#0f0f0f"),
+                BarTextColor = Color.White
+            };
 
 
         }

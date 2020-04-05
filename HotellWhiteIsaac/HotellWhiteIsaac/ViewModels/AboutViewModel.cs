@@ -11,8 +11,10 @@ namespace HotellWhiteIsaac.ViewModels
         {
             Title = "About";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
+            OpenTermsOfAgreementWebCommand = new Command(async () => await Browser.OpenAsync("https://www.gdprprivacynotice.com/sample-terms-conditions/terms-conditions-using-services-clause-example.jpg"));
         }
 
         public ICommand OpenWebCommand { get; }
+        public ICommand OpenTermsOfAgreementWebCommand { get; }
     }
 }

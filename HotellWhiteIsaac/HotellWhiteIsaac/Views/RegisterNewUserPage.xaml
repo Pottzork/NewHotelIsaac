@@ -343,7 +343,7 @@
                                 BackgroundColor="#f5737c" 
                                 TextColor="White" 
                                 FontAttributes="Bold" 
-                                CornerRadius="30"
+                                CornerRadius="20"
                                 Margin="0,20,0,0"/>
 
                         <!--Already got an account-->

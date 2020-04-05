@@ -47,5 +47,10 @@ namespace HotellWhiteIsaac.Views
         {
             Navigation.PushAsync(new NewProfilePage());
         }
+
+        private void ShowAvailableRoomsButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RoomsPage());
+        }
     }
 }

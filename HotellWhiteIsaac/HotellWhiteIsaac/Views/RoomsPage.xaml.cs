@@ -47,5 +47,11 @@ namespace HotellWhiteIsaac.Views
             if (viewModel.Items.Count == 0)
                 viewModel.IsBusy = true;
         }
+
+        private void ShowAvailableRommsButton_Clicked(object sender, EventArgs e)
+        {
+            RoomsStackLayout.IsVisible = true;
+            PickDateStackLayout.IsVisible = false;
+        }
     }
 }

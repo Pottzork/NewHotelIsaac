@@ -41,5 +41,10 @@ namespace HotellWhiteIsaac.Views
             viewModel = new RoomsDetailViewModel(item, bookButton);
             BindingContext = viewModel;
         }
+
+        private void ConfirmRoomButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NewBookingPage());
+        }
     }
 }

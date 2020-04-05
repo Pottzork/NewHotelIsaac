@@ -3,60 +3,103 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:HotellWhiteIsaac.CustomRenderer"
              mc:Ignorable="d"
              xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
-             x:Class="HotellWhiteIsaac.Views.NewBookingPage">
+             x:Class="HotellWhiteIsaac.Views.NewBookingPage"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Resources>
         <ResourceDictionary>
             <vm:NewBookingVM x:Key="vm"/>
+            <vm:AboutViewModel x:Key="about"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    <ContentPage.Content>
 
+        <StackLayout Padding="0">
 
-        <StackLayout>
-            <Label x:Name="TotalNightsLabel"
-                   Text=""/>
-            <StackLayout Margin="16" BindingContext="{StaticResource vm}">
-               
+        <Grid>
+            <!--HEADER-->
+            <StackLayout Padding="0" Margin="0">
+                <Grid>
+                    <Frame BackgroundColor="#f5737c" HeightRequest="110" HorizontalOptions="FillAndExpand" Padding="0"/>
+                    <Label Text="Hotel Isaac" FontSize="35" FontAttributes="Bold" 
+                           TextColor="White"  HorizontalTextAlignment="Center" Margin="0,20"/>
+                    <Label Text="Booking" FontSize="30" FontAttributes="Italic" 
+                           TextColor="White"  HorizontalTextAlignment="Center" Margin="0,55,0,0"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout Margin="20,130,20,0">
+                
+                <!--Check IN and Out fields-->
                 <StackLayout Orientation="Vertical">
-                    <Label Text="Check in:"/>
-                    <DatePicker x:Name="CheckInDate"
+                        <Label Text="Check in:" FontAttributes="Bold"/>
+                        <DatePicker x:Name="CheckInDate"
                                Format="D"
                                Margin="10,0,0,10"
                                DateSelected="CheckInDate_DateSelected"/>
-                    <Label Text="Check out:"/>
-                    <DatePicker x:Name="CheckOutDate"
+                        <Label Text="Check out:" FontAttributes="Bold"/>
+                        <DatePicker x:Name="CheckOutDate"
                                 Format="D"
                                 Margin="10,0,0,10"
                                 DateSelected="CheckOutDate_DateSelected"/>
-                    
-                  
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Total nights: "/>
+                        <Label x:Name="TotalNightsLabel"
+                   Text=""/>
+                    </StackLayout>
+
+                </StackLayout>
 
 
+                <!--EXTRA BED-->
+                <StackLayout BindingContext="{StaticResource vm}" Orientation="Horizontal">
+                    <Label VerticalTextAlignment="Center" 
+                           Text="ExtraBed:"/>
+                    <Switch IsToggled="{Binding ExtraBed, Mode=TwoWay}" Scale=".9"/>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label VerticalTextAlignment="Center" Text="ExtraBed:"/>
-                    <CheckBox IsChecked="{Binding ExtraBed, Mode=TwoWay}"/>
+                
+                
+                <!--TOTAL PRICE-->
+                <StackLayout BindingContext="{StaticResource vm}" Orientation="Horizontal">
+                    <Label VerticalTextAlignment="Center" 
+                           Text="Total Price:" 
+                           FontSize="Large" 
+                           FontAttributes="Bold" 
+                           TextColor="Black"/>
+                    <Label x:Name="PriceLabel" Text="1000kr" FontSize="Large"/>
+                    <!--<local:MyCustomEntry VerticalTextAlignment="Center" Text="{Binding TotalPrice, Mode=TwoWay}"/>-->
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label VerticalTextAlignment="Center" Text="Total Price:"/>
-                    <Entry VerticalTextAlignment="Center" Text="{Binding TotalPrice, Mode=TwoWay}"/>
+                <StackLayout Orientation="Horizontal" BindingContext="{StaticResource vm}">
+                    <!--<Label VerticalTextAlignment="Center" Text="RoomNr:"/>-->
+                    <!--<local:MyCustomEntry  VerticalTextAlignment="Center" Text="{Binding RoomNumber, Mode=TwoWay}"/>-->
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" >
-                    <Label VerticalTextAlignment="Center" Text="RoomNr:"/>
-                    <Entry VerticalTextAlignment="Center" Text="{Binding RoomNumber, Mode=TwoWay}"/>
+
+                
+                <!--TERMS OF SERVICE AGREEMENT-->
+                <StackLayout Orientation="Horizontal" BindingContext="{StaticResource about}">
+                    <CheckBox/>
+                    <Label Text="I agree to the terms of service" VerticalTextAlignment="Center"
+                           TextColor="#f5737c">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TermsOfService_Tapped" Command="{Binding OpenTermsOfAgreementWebCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
-                <Button Text="BOOK"
+                
+                <!--BOOK BUTTON-->
+                <Button Text="CONFIRM ORDER"
+                        Margin="0,25,0,0"
+                        BindingContext="{StaticResource vm}"
+                        CornerRadius="20"
+                        TextColor="White"
+                        BackgroundColor="LightGreen"
                         Command="{Binding SaveBookingCommand}"
                         CommandParameter="{Binding Name}"/>
 
 
 
             </StackLayout>
-        </StackLayout>
-
-
-    </ContentPage.Content>
+        </Grid>
+    </StackLayout>
 </ContentPage>

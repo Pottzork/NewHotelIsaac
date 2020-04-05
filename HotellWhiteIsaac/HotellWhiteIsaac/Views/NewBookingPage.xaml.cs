@@ -35,5 +35,10 @@ namespace HotellWhiteIsaac.Views
         {
             Recalculate();
         }
+
+        private void TermsOfService_Tapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }
