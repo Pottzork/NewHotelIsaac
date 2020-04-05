@@ -15,7 +15,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <views:RegisterNewUser />
+                <views:NewBookingPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

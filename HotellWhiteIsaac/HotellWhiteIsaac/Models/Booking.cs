@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HotellWhiteIsaac.Models
 {
-    class Booking
+  public  class Booking
     {
         public string Id { get; set; }
         public string UserId { get; set; }
@@ -12,6 +12,7 @@ namespace HotellWhiteIsaac.Models
         public int TotalDays { get; set; }
         public bool ExtraBed { get; set; }
         public int RoomNumber { get; set; }
-        public decimal TotalPrice { get; set; }
+        public float TotalPrice { get; set; }
+        public DateTime BookDate { get; set; }
     }
 }

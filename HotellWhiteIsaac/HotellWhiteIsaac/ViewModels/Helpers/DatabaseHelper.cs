@@ -17,6 +17,11 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
         Task<IList<Profile>> ReadProfile();
         //-----------------------------------
         //Booking hantering
+        bool InsertBooking(Booking booking);
+        Task<bool> DeleteBooking(Booking booking);
+        Task<bool> UpdateBooking(Booking booking);
+        Task<IList<Booking>> ReadBooking();
+        
   
     }
     public class DatabaseHelper 
@@ -49,6 +54,23 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
         //              Här hanteras Booking
         //-----------------------------------------------------------------------
 
+        public static Task<bool> DeleteBooking(Booking booking)
+        {
+            return firestore.DeleteBooking(booking);
+        }
+        public static bool InsertBooking(Booking booking)
+        {
+            return firestore.InsertBooking(booking);
+        }
 
+        public static Task<IList<Booking>> ReadBooking()
+        {
+            return firestore.ReadBooking();
+        }
+        
+        public static Task<bool> UpdateBooking(Booking booking)
+        {
+            return firestore.UpdateBooking(booking);
+        }
     }
 }

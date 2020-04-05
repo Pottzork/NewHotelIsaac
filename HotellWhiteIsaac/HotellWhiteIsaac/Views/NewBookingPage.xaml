@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
+             x:Class="HotellWhiteIsaac.Views.NewBookingPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:NewBookingVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+
+
+        <StackLayout>
+            <Label x:Name="TotalNightsLabel"
+                   Text=""/>
+            <StackLayout Margin="16" BindingContext="{StaticResource vm}">
+               
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Check in:"/>
+                    <DatePicker x:Name="CheckInDate"
+                               Format="D"
+                               Margin="10,0,0,10"
+                               DateSelected="CheckInDate_DateSelected"/>
+                    <Label Text="Check out:"/>
+                    <DatePicker x:Name="CheckOutDate"
+                                Format="D"
+                                Margin="10,0,0,10"
+                                DateSelected="CheckOutDate_DateSelected"/>
+                    
+                  
+
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label VerticalTextAlignment="Center" Text="ExtraBed:"/>
+                    <CheckBox IsChecked="{Binding ExtraBed, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label VerticalTextAlignment="Center" Text="Total Price:"/>
+                    <Entry VerticalTextAlignment="Center" Text="{Binding TotalPrice, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" >
+                    <Label VerticalTextAlignment="Center" Text="RoomNr:"/>
+                    <Entry VerticalTextAlignment="Center" Text="{Binding RoomNumber, Mode=TwoWay}"/>
+                </StackLayout>
+                <Button Text="BOOK"
+                        Command="{Binding SaveBookingCommand}"
+                        CommandParameter="{Binding Name}"/>
+
+
+
+            </StackLayout>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>
