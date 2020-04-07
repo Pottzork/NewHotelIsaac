@@ -29,11 +29,12 @@
                 </Grid>
             </StackLayout>
 
-        <StackLayout Margin="20,70,20,0">
+        <StackLayout>
 
 
                 <!--Check IN and Out fields-->
-                <StackLayout x:Name="PickDateStackLayout">
+                <StackLayout x:Name="PickDateStackLayout"
+                             Margin="20,70,20,0">
                     <StackLayout Orientation="Vertical" Margin="0,50,0,0">
                         <Label Text="Check in:" FontAttributes="Bold"/>
                         <DatePicker x:Name="CheckInDate"
@@ -66,15 +67,31 @@
                 </StackLayout>
 
 
-                <StackLayout Margin="10,40,20,0"
+                <StackLayout Margin="0,110,20,0"
                          x:Name="RoomsStackLayout" IsVisible="False">
                     <ListView BindingContext="{StaticResource vm}"
                       ItemsSource="{Binding Rooms}"
                       SelectedItem="{Binding SelectedRoom, Mode=TwoWay}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell Text="{Binding RoomType, Mode=TwoWay}"
-                                          Detail="{Binding Cost}"/>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="roomExample.jpg"/>
+                                        <StackLayout Orientation="Vertical">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Price:"/>
+                                                <Label Text="{Binding Cost, Mode=TwoWay}"/>
+                                                <Label Margin="100,0,0,0" Text="✔ WIFI Included" TextColor="DarkGreen"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Type:"/>
+                                                <Label Text="{Binding RoomType, Mode=TwoWay}"/>
+                                                <Label Margin="80,0,0,0" Text="✔ Breakfast Included" TextColor="DarkGreen"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                               
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
