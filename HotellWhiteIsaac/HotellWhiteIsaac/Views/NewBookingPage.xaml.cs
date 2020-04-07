@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotellWhiteIsaac.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,12 @@ namespace HotellWhiteIsaac.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewBookingPage : ContentPage
     {
-        RoomsPage rp;
+        NewBookingVM vm;
+        
         public NewBookingPage()
         {
             InitializeComponent();
+            vm = Resources["vm"] as NewBookingVM;
         }
     
         private void TermsOfService_Tapped(object sender, EventArgs e)
@@ -37,7 +40,7 @@ namespace HotellWhiteIsaac.Views
 
         //void Recalculate()
         //{
-        //    TotalDaysLabel.Text = rp.Recalculate().ToString();
+        //    TotalDaysLabel.Text = RoomsPage.CalculateAmountOfDays().ToString();
         //}
     }
 }

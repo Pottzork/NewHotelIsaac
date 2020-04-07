@@ -40,7 +40,6 @@
                            FontAttributes="Bold"/>
                     <BoxView HeightRequest="2" WidthRequest="400" BackgroundColor="Black"/>
                     <Label Text="Check in:" FontAttributes="Bold" FontSize="20"/>
-                    <Label Text="{Binding Checkin}"/>
 
                     <Label Text="Check out:" FontAttributes="Bold" FontSize="20"/>
 

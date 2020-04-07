@@ -12,6 +12,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <vm:RoomsVM x:Key="vm"/>
+            <vm:NewBookingVM x:Key="vmBook"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -44,12 +45,12 @@
                                     Format="D"
                                     Margin="10,0,0,10"
                                     DateSelected="CheckOutDate_DateSelected"/>
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" BindingContext="{StaticResource vmBook}">
                             <Label Text="Total nights: " 
                                    FontSize="20"
                                    TextColor="Black"/>
                             <Label x:Name="TotalNightsLabel"
-                       Text="" FontSize="20" FontAttributes="Bold"
+                       Text="{Binding TotalDays}" FontSize="20" FontAttributes="Bold"
                                    TextColor="Black"/>
 
 

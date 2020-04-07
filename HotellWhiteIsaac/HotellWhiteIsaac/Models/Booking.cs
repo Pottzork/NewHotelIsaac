@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HotellWhiteIsaac.Models
 {
-  public  class Booking
+  public class Booking
     {
         public string Id { get; set; }
         public string UserId { get; set; }

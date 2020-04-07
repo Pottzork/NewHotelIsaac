@@ -5,11 +5,11 @@ using Xamarin.Forms;
 
 namespace HotellWhiteIsaac.ViewModels
 {
-    public class AboutViewModel : BaseViewModel
+    public class AboutViewModel
     {
         public AboutViewModel()
         {
-            Title = "About";
+
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
             OpenTermsOfAgreementWebCommand = new Command(async () => await Browser.OpenAsync("https://www.gdprprivacynotice.com/sample-terms-conditions/terms-conditions-using-services-clause-example.jpg"));
         }

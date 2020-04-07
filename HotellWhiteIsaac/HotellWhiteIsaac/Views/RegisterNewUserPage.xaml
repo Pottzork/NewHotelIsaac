@@ -19,9 +19,7 @@
             <vm:LoginVM x:Key="vm"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.BindingContext>
-        <vm:RegisterViewModel />
-    </ContentPage.BindingContext>
+
 
     <StackLayout Padding="0" BackgroundColor="LightGray">
 

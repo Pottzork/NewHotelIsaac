@@ -12,6 +12,7 @@ namespace HotellWhiteIsaac.ViewModels
 {
     class NewBookingVM : INotifyPropertyChanged
     {
+
         private Booking booking;
 
         public Booking Booking
@@ -21,7 +22,7 @@ namespace HotellWhiteIsaac.ViewModels
             {
                 booking = value;
                 Name = booking.Name;
-                TotalDays = booking.TotalDays;
+                totalDays = booking.TotalDays;
                 extraBed = booking.ExtraBed;
                 roomNumber = booking.RoomNumber;
                 totalPrice = booking.TotalPrice;
@@ -44,9 +45,9 @@ namespace HotellWhiteIsaac.ViewModels
         public int TotalDays
         {
             get { return totalDays; }
-            set { 
+            set {
+                
                 totalDays = value;
-                Booking.TotalDays = totalDays;
                 OnPropertyChanged("TotalDays");
             }
         }
