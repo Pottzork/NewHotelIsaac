@@ -13,32 +13,31 @@ namespace HotellWhiteIsaac.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewBookingPage : ContentPage
     {
+        RoomsPage rp;
         public NewBookingPage()
         {
             InitializeComponent();
         }
     
-    
-
-        void Recalculate()
-        {
-            TimeSpan timeSpan = CheckOutDate.Date - CheckInDate.Date;
-            TotalNightsLabel.Text = "TotalNights" + timeSpan.Days.ToString();
-        }
-
-        private void CheckInDate_DateSelected(object sender, DateChangedEventArgs e)
-        {
-            Recalculate();
-        }
-
-        private void CheckOutDate_DateSelected(object sender, DateChangedEventArgs e)
-        {
-            Recalculate();
-        }
-
         private void TermsOfService_Tapped(object sender, EventArgs e)
         {
-
+            
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            //Recalculate();
+        }
+        private void TermsChecbox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            ConfirmButton.BackgroundColor = Color.LightGreen;
+        }
+
+        //void Recalculate()
+        //{
+        //    TotalDaysLabel.Text = rp.Recalculate().ToString();
+        //}
     }
 }

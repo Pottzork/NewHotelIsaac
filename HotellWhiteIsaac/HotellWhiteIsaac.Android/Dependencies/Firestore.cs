@@ -339,7 +339,8 @@ namespace HotellWhiteIsaac.Droid.Dependencies
                     Room room = new Room
                     {
                         RoomType = doc.Get("roomType").ToString(),
-                        Cost = (float)doc.Get("cost")
+                        Cost = (float)doc.Get("cost"),
+                        IsAvailable = (bool)doc.Get("isAvailable")
                     };
 
                     //profiles.Add(profile);

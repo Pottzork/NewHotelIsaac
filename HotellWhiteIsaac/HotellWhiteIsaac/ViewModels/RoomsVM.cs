@@ -20,11 +20,11 @@ namespace HotellWhiteIsaac.ViewModels
 			get { return room; }
 			set { 
 				room = value;
-				IsAvailable = isAvailable;
-				IsCleaned = isCleaned;
-				ExtraBed = extraBed;
-				RoomType = roomType;
-				Cost = cost;
+				IsAvailable = room.IsAvailable;
+				IsCleaned = room.IsCleaned;
+				ExtraBed = room.ExtraBed;
+				RoomType = room.RoomType;
+				Cost = room.Cost;
 				OnPropertyChanged("Room");
 				}
 			//Insert ID  Firestore/db.collection('rooms').doc('room1-10').get();
@@ -71,7 +71,8 @@ namespace HotellWhiteIsaac.ViewModels
 			get { return roomType; }
 			set {
 				roomType = value;
-				Room.RoomType = roomType; 
+				Room.RoomType = roomType;
+				OnPropertyChanged("RoomType");
 			}
 		}
 		private float cost;
@@ -81,6 +82,7 @@ namespace HotellWhiteIsaac.ViewModels
 			get { return cost; }
 			set { cost = value;
 				Room.Cost = cost;
+				OnPropertyChanged("Cost");
 					}
 		}
 

@@ -15,6 +15,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
+<ContentPage.Content>
     <Grid>
             <!--HEADER-->
         <StackLayout Padding="0" Margin="0">
@@ -29,24 +30,24 @@
         
         
         <!--ROOM DETAILS INFO-->
-        <StackLayout Spacing="10" Padding="40" Margin="0,90,0,0" BindingContext="{StaticResource vm}">
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Price per night: " FontSize="20"/>
-                <Label Text="{Binding Cost}" VerticalTextAlignment="End" FontSize="20"/>
-                <Label Text="kr" VerticalTextAlignment="End"/>
+            <StackLayout Spacing="10" Padding="40" Margin="0,90,0,0" BindingContext="{StaticResource vm}">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Price per night: " FontSize="20"/>
+                    <Label Text="{Binding Cost}" VerticalTextAlignment="End" FontSize="20"/>
+                    <Label Text="kr" VerticalTextAlignment="End"/>
 
-            </StackLayout>
-            <Label Text="{Binding RoomType}" FontSize="30"/>
-            
-         
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
 
-            <Label Text="Description:" FontSize="Large" />
-            <Label Text="Some info about the room" d:Text="Item description" FontSize="18"/>
+                    <Label Text="Type of room: " FontSize="20"/>
+                    <Label Text="{Binding RoomType}" FontSize="20"/>
+                </StackLayout>
+                <StackLayout>
+                </StackLayout>
 
-            <Image Source="roomExample.jpg" Margin="0,0,0,15"/>
-            
-            <!--BOOK BUTTON-->
-            <Button x:Name="ConfirmRoomButton"
+                <Image Source="roomExample.jpg" Margin="0,0,0,15"/>
+                <!--BOOK BUTTON-->
+                <Button x:Name="ConfirmRoomButton"
                     Text="Book Now" 
                     FontAttributes="Bold" 
                     BackgroundColor="#f5737c" 
@@ -54,7 +55,10 @@
                     TextColor="white"
                     Clicked="ConfirmRoomButton_Clicked"
                     />
-        </StackLayout>
+            </StackLayout>
+
+
     </Grid>
-    
+ </ContentPage.Content>
+
 </ContentPage>

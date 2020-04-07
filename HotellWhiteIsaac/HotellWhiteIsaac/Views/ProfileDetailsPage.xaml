@@ -9,22 +9,23 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <vm:ProfileDetailsVM x:Key="vm"/>
+            <vm:RoomsVM x:Key="vm"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Update"
-                     BindingContext="{StaticResource vm}"
-                     Command="{Binding UpdateCommand}"
-                     CommandParameter="{Binding Name}"/>
+                     BindingContext="{StaticResource vm}"/>
+                    <!--Command="{Binding UpdateCommand}"
+                     CommandParameter="{Binding Name}"-->
+
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout Margin="16"
                      BindingContext="{StaticResource vm}">
             <Entry Placeholder="Profile Name"
-                   Text="{Binding Name, Mode=TwoWay}"/>
+                   Text="{Binding RoomType, Mode=TwoWay}"/>
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="FillAndExpand">
                 <Label Text="Is this profile still active?"

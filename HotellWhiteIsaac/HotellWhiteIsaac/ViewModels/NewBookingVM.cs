@@ -12,22 +12,23 @@ namespace HotellWhiteIsaac.ViewModels
 {
     class NewBookingVM : INotifyPropertyChanged
     {
-        //private Booking booking;
+        private Booking booking;
 
-        //public Booking Booking
-        //{
-        //    get { return booking; }
-        //    set
-        //    {
-        //        booking = value;
-        //        Name = booking.Name;
-        //        TotalDays = booking.TotalDays;
-        //        extraBed = booking.ExtraBed;
-        //        roomNumber = booking.RoomNumber;
-        //        totalPrice = booking.TotalPrice;
-        //        OnPropertyChanged("Booking");
-        //    }
-        //}
+        public Booking Booking
+        {
+            get { return booking; }
+            set
+            {
+                booking = value;
+                Name = booking.Name;
+                TotalDays = booking.TotalDays;
+                extraBed = booking.ExtraBed;
+                roomNumber = booking.RoomNumber;
+                totalPrice = booking.TotalPrice;
+                OnPropertyChanged("Booking");
+            }
+        }
+
 
         private string name;
         public string Name
@@ -45,6 +46,7 @@ namespace HotellWhiteIsaac.ViewModels
             get { return totalDays; }
             set { 
                 totalDays = value;
+                Booking.TotalDays = totalDays;
                 OnPropertyChanged("TotalDays");
             }
         }
@@ -76,11 +78,19 @@ namespace HotellWhiteIsaac.ViewModels
         public float TotalPrice
         {
             get { return totalPrice; }
-            set { 
+            set {
                 totalPrice = value;
                 OnPropertyChanged("TotalPrice");
+                
             }
         }
+
+        //public float CalculateTotalPrice()
+        //{
+        //    TotalPrice = vm.Cost * float.Parse(rp.Recalculate());
+        //    return TotalPrice;
+        //}
+
         public ICommand SaveBookingCommand { get; set; }
 
 

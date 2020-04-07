@@ -1,31 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using HotellWhiteIsaac.Models;
-using HotellWhiteIsaac.Views;
 using HotellWhiteIsaac.ViewModels;
 
 namespace HotellWhiteIsaac.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RoomsPage : ContentPage
     {
-        RoomsViewModel viewModel;
+
         RoomsVM vm;
+        NewBookingVM nb;
+
 
         public RoomsPage()
         {
             InitializeComponent();
             vm = Resources["vm"] as RoomsVM;
-            BindingContext = viewModel = new RoomsViewModel();
         }
 
 
@@ -54,10 +45,11 @@ namespace HotellWhiteIsaac.Views
             PickDateStackLayout.IsVisible = false;
         }
 
-        void Recalculate()
+        public int Recalculate()
         {
             TimeSpan timeSpan = CheckOutDate.Date - CheckInDate.Date;
-            TotalNightsLabel.Text = timeSpan.Days.ToString();
+            return timeSpan.Days;
+
         }
 
         private void CheckInDate_DateSelected(object sender, DateChangedEventArgs e)
@@ -68,6 +60,7 @@ namespace HotellWhiteIsaac.Views
         private void CheckOutDate_DateSelected(object sender, DateChangedEventArgs e)
         {
             Recalculate();
+            TotalNightsLabel.Text = Recalculate().ToString();
         }
 
     }

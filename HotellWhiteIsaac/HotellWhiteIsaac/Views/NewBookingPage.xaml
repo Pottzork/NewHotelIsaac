@@ -6,12 +6,15 @@
              xmlns:local="clr-namespace:HotellWhiteIsaac.CustomRenderer"
              mc:Ignorable="d"
              xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
+             xmlns:vm1="clr-namespace:HotellWhiteIsaac.Views"
              x:Class="HotellWhiteIsaac.Views.NewBookingPage"
              NavigationPage.HasBackButton="True">
     <ContentPage.Resources>
         <ResourceDictionary>
             <vm:NewBookingVM x:Key="vm"/>
             <vm:AboutViewModel x:Key="about"/>
+            <vm:RoomsVM x:Key="roomsVM"/>
+            <vm1:RoomsPage x:Key="rp"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -32,21 +35,18 @@
             <StackLayout Margin="20,130,20,0">
                 
                 <!--Check IN and Out fields-->
-                <StackLayout Orientation="Vertical">
-                        <Label Text="Check in:" FontAttributes="Bold"/>
-                        <DatePicker x:Name="CheckInDate"
-                               Format="D"
-                               Margin="10,0,0,10"
-                               DateSelected="CheckInDate_DateSelected"/>
-                        <Label Text="Check out:" FontAttributes="Bold"/>
-                        <DatePicker x:Name="CheckOutDate"
-                                Format="D"
-                                Margin="10,0,0,10"
-                                DateSelected="CheckOutDate_DateSelected"/>
-                    <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Vertical" BindingContext="{StaticResource rp}">
+                    <Label Text="Review your booking" FontSize="30" HorizontalOptions="Center"
+                           FontAttributes="Bold"/>
+                    <BoxView HeightRequest="2" WidthRequest="400" BackgroundColor="Black"/>
+                    <Label Text="Check in:" FontAttributes="Bold" FontSize="20"/>
+                    <Label Text="{Binding Checkin}"/>
+
+                    <Label Text="Check out:" FontAttributes="Bold" FontSize="20"/>
+
+                    <StackLayout Orientation="Horizontal" Margin="0,20,0,0" BindingContext="{StaticResource vm}">
                         <Label Text="Total nights: "/>
-                        <Label x:Name="TotalNightsLabel"
-                   Text=""/>
+                        <Label x:Name="TotalDaysLabel" Text="{Binding TotalDays}"/>
                     </StackLayout>
 
                 </StackLayout>
@@ -57,6 +57,7 @@
                     <Label VerticalTextAlignment="Center" 
                            Text="ExtraBed:"/>
                     <Switch IsToggled="{Binding ExtraBed, Mode=TwoWay}" Scale=".9"/>
+                    <Label Text="(+250kr)" VerticalTextAlignment="Center"/>
                 </StackLayout>
                 
                 
@@ -67,18 +68,13 @@
                            FontSize="Large" 
                            FontAttributes="Bold" 
                            TextColor="Black"/>
-                    <Label x:Name="PriceLabel" Text="1000kr" FontSize="Large"/>
+                    <Label x:Name="PriceLabel" Text="{Binding TotalPrice}" FontSize="Large"/>
                     <!--<local:MyCustomEntry VerticalTextAlignment="Center" Text="{Binding TotalPrice, Mode=TwoWay}"/>-->
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" BindingContext="{StaticResource vm}">
-                    <!--<Label VerticalTextAlignment="Center" Text="RoomNr:"/>-->
-                    <!--<local:MyCustomEntry  VerticalTextAlignment="Center" Text="{Binding RoomNumber, Mode=TwoWay}"/>-->
-                </StackLayout>
-
-                
+          
                 <!--TERMS OF SERVICE AGREEMENT-->
                 <StackLayout Orientation="Horizontal" BindingContext="{StaticResource about}">
-                    <CheckBox/>
+                    <CheckBox x:Name="TermsChecbox" IsChecked="False" CheckedChanged="TermsChecbox_CheckedChanged"/>
                     <Label Text="I agree to the terms of service" VerticalTextAlignment="Center"
                            TextColor="#f5737c">
                         <Label.GestureRecognizers>
@@ -88,12 +84,14 @@
                 </StackLayout>
                 
                 <!--BOOK BUTTON-->
-                <Button Text="CONFIRM ORDER"
+                <Button x:Name="ConfirmButton"
+                        Text="CONFIRM ORDER"
                         Margin="0,25,0,0"
                         BindingContext="{StaticResource vm}"
                         CornerRadius="20"
                         TextColor="White"
-                        BackgroundColor="LightGreen"
+                        IsEnabled="False"
+                        BackgroundColor="Gray"
                         Command="{Binding SaveBookingCommand}"
                         CommandParameter="{Binding Name}"/>
 
