@@ -22,7 +22,7 @@
     <Grid>
 
 
-            <ListView BindingContext="{StaticResource vm}"
+            <!--<ListView BindingContext="{StaticResource vm}"
                 ItemsSource="{Binding Profiles}"
                 SelectedItem="{Binding SelectedProfile, Mode=TwoWay}">
                 <ListView.ItemTemplate>
@@ -31,7 +31,7 @@
                               Detail="{Binding SubscribedDate}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
 
 
         <!--HEADER-->

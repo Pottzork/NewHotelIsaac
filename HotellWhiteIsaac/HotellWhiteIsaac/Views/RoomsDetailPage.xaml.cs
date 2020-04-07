@@ -11,35 +11,41 @@ namespace HotellWhiteIsaac.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class ItemDetailPage : ContentPage
+    public partial class RoomsDetailPage : ContentPage
     {
         RoomsDetailViewModel viewModel;
 
-        public ItemDetailPage(RoomsDetailViewModel viewModel)
+        RoomsVM vm;
+
+        public RoomsDetailPage()
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
+            vm = Resources["vm"] as RoomsVM;
         }
 
-        public ItemDetailPage()
+        public RoomsDetailPage(Room selectedProfile)
         {
             InitializeComponent();
 
-            var item = new Room
-            {
-                Text = "Item 1",
-                Description = "This is an item description."
+
+            vm = Resources["vm"] as RoomsVM;
+            vm.Room = selectedProfile;
+
+            //var item = new Room
+            //{
+            //    Text = "Item 1",
+            //    Description = "This is an item description."
                 
-            };
+            //};
 
-            var bookButton = new Button
-            {
-                Text = "Book Now"
-            };
+            //var bookButton = new Button
+            //{
+            //    Text = "Book Now"
+            //};
 
-            viewModel = new RoomsDetailViewModel(item, bookButton);
-            BindingContext = viewModel;
+            //viewModel = new RoomsDetailViewModel(item, bookButton);
+            //BindingContext = viewModel;
         }
 
         private void ConfirmRoomButton_Clicked(object sender, EventArgs e)

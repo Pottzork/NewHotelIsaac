@@ -19,21 +19,22 @@ namespace HotellWhiteIsaac.Views
     public partial class RoomsPage : ContentPage
     {
         RoomsViewModel viewModel;
+        RoomsVM vm;
 
         public RoomsPage()
         {
             InitializeComponent();
-
+            vm = Resources["vm"] as RoomsVM;
             BindingContext = viewModel = new RoomsViewModel();
         }
 
 
-        async void OnItemSelected(object sender, EventArgs args)
-        {
-            var layout = (BindableObject)sender;
-            var item = (Room)layout.BindingContext;
-            await Navigation.PushAsync(new ItemDetailPage(new RoomsDetailViewModel(item)));
-        }
+        //async void OnItemSelected(object sender, EventArgs args)
+        //{
+        //    var layout = (BindableObject)sender;
+        //    var item = (Room)layout.BindingContext;
+        //    await Navigation.PushAsync(new RoomsDetailPage(new RoomsVM(item)));
+        //}
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
@@ -44,8 +45,7 @@ namespace HotellWhiteIsaac.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.IsBusy = true;
+            vm.ReadRooms();
         }
 
         private void ShowAvailableRommsButton_Clicked(object sender, EventArgs e)
@@ -53,5 +53,22 @@ namespace HotellWhiteIsaac.Views
             RoomsStackLayout.IsVisible = true;
             PickDateStackLayout.IsVisible = false;
         }
+
+        void Recalculate()
+        {
+            TimeSpan timeSpan = CheckOutDate.Date - CheckInDate.Date;
+            TotalNightsLabel.Text = timeSpan.Days.ToString();
+        }
+
+        private void CheckInDate_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            Recalculate();
+        }
+
+        private void CheckOutDate_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            Recalculate();
+        }
+
     }
 }

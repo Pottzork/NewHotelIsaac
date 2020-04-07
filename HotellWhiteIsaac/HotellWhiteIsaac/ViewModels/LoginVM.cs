@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HotellWhiteIsaac.ViewModels
@@ -78,7 +79,11 @@ namespace HotellWhiteIsaac.ViewModels
         {
             LoginCommand = new Command(Login, LoginCanExecute);
             RegisterCommand = new Command(Register, RegisterCanExecute);
+            OpenFacebookLogin = new Command(async () => await Browser.OpenAsync("https://www.facebook.com/"));
+            OpenGoogleLogin = new Command(async () => await Browser.OpenAsync("https://accounts.google.com/"));
         }
+        public ICommand OpenFacebookLogin { get; }
+        public ICommand OpenGoogleLogin { get; }
 
         private bool RegisterCanExecute(object parameter)
         {

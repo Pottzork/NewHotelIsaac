@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="HotellWhiteIsaac.Views.AboutPage"
-             xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels">
+             xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
+             NavigationPage.HasBackButton="True">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -17,7 +18,8 @@
     <ContentPage.Content>
         <StackLayout>
             <ListView BindingContext="{StaticResource vm}"
-                      ItemsSource="{Binding Rooms}">
+                      ItemsSource="{Binding Rooms}"
+                      SelectedItem="{Binding SelectedRoom, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding RoomType}"/>

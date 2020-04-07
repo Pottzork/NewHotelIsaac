@@ -99,13 +99,14 @@ namespace HotellWhiteIsaac.ViewModels
 
         private void SaveBooking(object obj)
         {
-            bool result = DatabaseHelper.InsertBooking(new Models.Booking
+            bool result = DatabaseHelper.InsertBooking(new Booking
             {
                 Name = Name,
                 UserId = Auth.GetCurrentUserId(),
                 BookDate = DateTime.Now,
                 TotalDays = TotalDays,
                 TotalPrice = TotalPrice,
+                ExtraBed = ExtraBed,
                 RoomNumber = RoomNumber
             });
 

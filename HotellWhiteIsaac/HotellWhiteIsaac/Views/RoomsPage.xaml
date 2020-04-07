@@ -5,13 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="HotellWhiteIsaac.Views.RoomsPage"
+             xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage"
+             NavigationPage.HasBackButton="True"
              >
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
-    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:RoomsVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <StackLayout Padding="0">
     <Grid>
@@ -35,17 +39,20 @@
                         <Label Text="Check in:" FontAttributes="Bold"/>
                         <DatePicker x:Name="CheckInDate"
                                    Format="D"
-                                   Margin="10,0,0,10"/>
-                                   <!--DateSelected="CheckInDate_DateSelected"-->
+                                   Margin="10,0,0,10"
+                                   DateSelected="CheckInDate_DateSelected"/>
                         <Label Text="Check out:" FontAttributes="Bold"/>
                         <DatePicker x:Name="CheckOutDate"
                                     Format="D"
-                                    Margin="10,0,0,10"/>
-                        <!--DateSelected="CheckOutDate_DateSelected"/>-->
+                                    Margin="10,0,0,10"
+                                    DateSelected="CheckOutDate_DateSelected"/>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Total nights: "/>
+                            <Label Text="Total nights: " 
+                                   FontSize="20"
+                                   TextColor="Black"/>
                             <Label x:Name="TotalNightsLabel"
-                       Text=""/>
+                       Text="" FontSize="20" FontAttributes="Bold"
+                                   TextColor="Black"/>
 
 
                         </StackLayout>
@@ -54,49 +61,24 @@
                                 CornerRadius="20"
                                 TextColor="White"
                                 BackgroundColor="#f5737c"
-                                Clicked="ShowAvailableRommsButton_Clicked"/>
+                                Clicked="ShowAvailableRommsButton_Clicked"
+                                Margin="0,25"/>
                     </StackLayout>
                 </StackLayout>
 
 
                 <StackLayout Margin="10,40,20,0"
                          x:Name="RoomsStackLayout" IsVisible="False">
-
-                <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
-                    <CollectionView x:Name="ItemsCollectionView"
-                        ItemsSource="{Binding Items}">
-                    <d:CollectionView.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Room 1</x:String>
-                            <x:String>Room 2</x:String>
-                            <x:String>Room 3</x:String>
-                            <x:String>Room 4</x:String>
-                            <x:String>Room 5</x:String>
-                            <x:String>Room 6</x:String>
-                        </x:Array>
-                    </d:CollectionView.ItemsSource>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Text}" 
-                                        d:Text="{Binding .}"
-                                        LineBreakMode="NoWrap" 
-                                        Style="{DynamicResource ListItemTextStyle}" 
-                                        FontSize="16" />
-                                <Label Text="{Binding Description}" 
-                                        d:Text="Item descripton"
-                                        LineBreakMode="NoWrap"
-                                        Style="{DynamicResource ListItemDetailTextStyle}"
-                                        FontSize="13" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </RefreshView>
-            </StackLayout>
+                    <ListView BindingContext="{StaticResource vm}"
+                      ItemsSource="{Binding Rooms}"
+                      SelectedItem="{Binding SelectedRoom, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding RoomType}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
         </StackLayout>
 </Grid>
 

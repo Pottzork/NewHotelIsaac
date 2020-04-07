@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,7 +17,10 @@ namespace HotellWhiteIsaac.Views
         public RegisterNewUser()
         {
             InitializeComponent();
+
         }
+
+
 
         private void OnAlreadyHaveAccount_Tapped(object sender, EventArgs e)
         {
@@ -31,5 +35,6 @@ namespace HotellWhiteIsaac.Views
             LoginStackLayout.IsVisible = false;
 
         }
+
     }
 }

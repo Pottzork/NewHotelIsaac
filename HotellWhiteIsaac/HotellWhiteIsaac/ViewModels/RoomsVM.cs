@@ -1,5 +1,6 @@
 ﻿using HotellWhiteIsaac.Models;
 using HotellWhiteIsaac.ViewModels.Helpers;
+using HotellWhiteIsaac.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,15 +23,34 @@ namespace HotellWhiteIsaac.ViewModels
 				IsAvailable = isAvailable;
 				IsCleaned = isCleaned;
 				ExtraBed = extraBed;
+				RoomType = roomType;
+				Cost = cost;
+				OnPropertyChanged("Room");
 				}
 			//Insert ID  Firestore/db.collection('rooms').doc('room1-10').get();
 
 		}
+
+		private Room selectedRoom;
+
+		public Room SelectedRoom
+		{
+			get { return selectedRoom; }
+			set { 
+				selectedRoom = value;
+				OnPropertyChanged("SelectedRoom");
+				if (selectedRoom != null)
+				{
+					App.Current.MainPage.Navigation.PushAsync(new RoomsDetailPage(selectedRoom));
+				}
+			}
+		}
+
 		public ObservableCollection<Room> Rooms { get; set; }
 
 		public RoomsVM()
 		{
-			//UpdateRoomCommand = new Command(UpdateRoom);
+			UpdateRoomCommand = new Command(UpdateRoom);
 			Rooms = new ObservableCollection<Room>();
 		}
 
@@ -49,7 +69,8 @@ namespace HotellWhiteIsaac.ViewModels
 		public string RoomType
 		{
 			get { return roomType; }
-			set { 
+			set {
+				roomType = value;
 				Room.RoomType = roomType; 
 			}
 		}
@@ -58,7 +79,9 @@ namespace HotellWhiteIsaac.ViewModels
 		public float Cost
 		{
 			get { return cost; }
-			set { cost = value; }
+			set { cost = value;
+				Room.Cost = cost;
+					}
 		}
 
 		private bool isAvailable;
@@ -66,7 +89,7 @@ namespace HotellWhiteIsaac.ViewModels
 		public bool IsAvailable
 		{
 			get { return isAvailable; }
-			set { isAvailable = value; }
+			set { isAvailable = value; OnPropertyChanged("IsAvailable"); }
 		}
 
 		private bool isCleaned;
@@ -82,7 +105,7 @@ namespace HotellWhiteIsaac.ViewModels
 		public bool ExtraBed
 		{
 			get { return extraBed; }
-			set { extraBed = value; }
+			set { extraBed = value; OnPropertyChanged("ExtraBed"); }
 		}
 
 

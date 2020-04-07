@@ -8,6 +8,7 @@
              x:Class="HotellWhiteIsaac.Views.RegisterNewUser"
              xmlns:local="clr-namespace:HotellWhiteIsaac" 
              xmlns:local1="clr-namespace:HotellWhiteIsaac.CustomRenderer"
+             xmlns:vm1="clr-namespace:HotellWhiteIsaac.Views"
              Title="{Binding Title}"
              NavigationPage.HasNavigationBar="false"
              >
@@ -190,10 +191,13 @@
                                        CornerRadius="30"
                                        HasShadow="False" 
                                        BorderColor="DarkGray">
-                                    <Image 
+                                    <ImageButton
+                                        x:Name="FacebookButton"
                                         Source="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-facebook-circle-512.png" 
                                         Aspect="AspectFill" 
-                                        Margin="0"/>
+                                        Margin="0"
+                                        Command="{Binding OpenFacebookLogin}"
+                                        />
                                 </Frame>
                                 <Frame BackgroundColor="LightGray" 
                                        WidthRequest="50" 
@@ -203,9 +207,12 @@
                                        CornerRadius="30"
                                        HasShadow="False" 
                                        BorderColor="DarkGray">
-                                    <Image Source="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/google-icon.png" 
+                                    <ImageButton 
+                                        x:Name="GoogleIconButton"
+                                        Source="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/google-icon.png" 
                                            Aspect="AspectFill"
-                                           Margin="0"/>
+                                           Margin="0"
+                                        Command="{Binding OpenGoogleLogin}"/>
                                 </Frame>
                             </StackLayout>
                             

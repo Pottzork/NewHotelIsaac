@@ -3,9 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
              mc:Ignorable="d"
-             x:Class="HotellWhiteIsaac.Views.ItemDetailPage"
+             x:Class="HotellWhiteIsaac.Views.RoomsDetailPage"
              Title="{Binding Title}">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:RoomsVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <Grid>
             <!--HEADER-->
@@ -21,11 +29,19 @@
         
         
         <!--ROOM DETAILS INFO-->
-        <StackLayout Spacing="10" Padding="40" Margin="0,90,0,0">
-            <Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="30"/>
+        <StackLayout Spacing="10" Padding="40" Margin="0,90,0,0" BindingContext="{StaticResource vm}">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Price per night: " FontSize="20"/>
+                <Label Text="{Binding Cost}" VerticalTextAlignment="End" FontSize="20"/>
+                <Label Text="kr" VerticalTextAlignment="End"/>
+
+            </StackLayout>
+            <Label Text="{Binding RoomType}" FontSize="30"/>
+            
+         
 
             <Label Text="Description:" FontSize="Large" />
-            <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="18"/>
+            <Label Text="Some info about the room" d:Text="Item description" FontSize="18"/>
 
             <Image Source="roomExample.jpg" Margin="0,0,0,15"/>
             

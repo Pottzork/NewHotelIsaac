@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
              x:Class="HotellWhiteIsaac.Views.NewBookingPage"
-             NavigationPage.HasNavigationBar="false">
+             NavigationPage.HasBackButton="True">
     <ContentPage.Resources>
         <ResourceDictionary>
             <vm:NewBookingVM x:Key="vm"/>
