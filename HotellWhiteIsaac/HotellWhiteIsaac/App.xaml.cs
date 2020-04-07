@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using HotellWhiteIsaac.Services;
 using HotellWhiteIsaac.Views;
+using HotellWhiteIsaac.Views.CleanerView;
 
 namespace HotellWhiteIsaac
 {
@@ -14,7 +15,7 @@ namespace HotellWhiteIsaac
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new AboutPage())
+            MainPage = new NavigationPage(new CleanerPage())
             {
                 BarBackgroundColor = Color.FromHex("#0f0f0f"),
                 BarTextColor = Color.White

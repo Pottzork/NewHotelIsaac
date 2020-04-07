@@ -30,7 +30,7 @@ namespace HotellWhiteIsaac.ViewModels
 
 		public RoomsVM()
 		{
-			//UpdateRoomCommand = new Command(UpdateRoom);
+			UpdateRoomCommand = new Command(UpdateRoom);
 			Rooms = new ObservableCollection<Room>();
 		}
 
@@ -108,7 +108,7 @@ namespace HotellWhiteIsaac.ViewModels
 			bool result = await DatabaseHelper.UpdateRoom(Room);
 			if (result)
 			{
-				await App.Current.MainPage.Navigation.PopAsync();
+				await App.Current.MainPage.DisplayAlert("Confirmation", "You have been assigned!", "Ok");
 			}
 			else
 			{
