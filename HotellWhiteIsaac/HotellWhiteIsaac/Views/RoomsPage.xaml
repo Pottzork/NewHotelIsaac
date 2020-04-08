@@ -71,11 +71,11 @@
                          x:Name="RoomsStackLayout" IsVisible="False">
                     <ListView BindingContext="{StaticResource vm}"
                       ItemsSource="{Binding Rooms}"
-                      SelectedItem="{Binding SelectedRoom, Mode=TwoWay}">
+                      SelectedItem="{Binding SelectedRoom, Mode=TwoWay}" HasUnevenRows="True">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal">
+                                <ViewCell Height="80">
+                                    <StackLayout Orientation="Horizontal" Margin="10,0">
                                         <Image Source="roomExample.jpg"/>
                                         <StackLayout Orientation="Vertical">
                                             <StackLayout Orientation="Horizontal">

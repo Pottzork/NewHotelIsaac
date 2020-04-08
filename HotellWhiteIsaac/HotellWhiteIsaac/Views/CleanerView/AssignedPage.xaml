@@ -6,5 +6,12 @@
              mc:Ignorable="d"
              xmlns:vm="clr-namespace:HotellWhiteIsaac.ViewModels"
              x:Class="HotellWhiteIsaac.Views.CleanerView.AssignedPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:RoomsVM x:Key="vm"/>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
    
 </ContentPage>

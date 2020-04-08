@@ -32,17 +32,22 @@
         <!--ROOM DETAILS INFO-->
             <StackLayout Spacing="10" Padding="40" Margin="0,90,0,0" BindingContext="{StaticResource vm}">
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Price per night: " FontSize="20"/>
-                    <Label Text="{Binding Cost}" VerticalTextAlignment="End" FontSize="20"/>
-                    <Label Text="kr" VerticalTextAlignment="End"/>
+                    <Label Text="Price per night: " FontSize="15" TextColor="Black"/>
+                    <Label Text="{Binding Cost}" VerticalTextAlignment="End" FontSize="15" TextColor="Black"/>
+                    <Label Text="kr" VerticalTextAlignment="End" TextColor="Black"/>
 
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
 
-                    <Label Text="Type of room: " FontSize="20"/>
-                    <Label Text="{Binding RoomType}" FontSize="20"/>
+                    <Label Text="Type of room: " FontSize="15" TextColor="Black"/>
+                    <Label Text="{Binding RoomType}" FontSize="15" TextColor="Black"/>
                 </StackLayout>
                 <StackLayout>
+                    <Label Margin="0,10,0,0" Text="✔ Wifi Included" TextColor="DarkGreen"/>
+                    <Label Text="✔ Breakfast Included" TextColor="DarkGreen"/>
+                    <Label Text="✔ Ocean View" TextColor="DarkGreen"/>
+                    <Label Text="❌ Access to spa" TextColor="Red"/>
+                    <Label Text="❌ Parking(due to construction work)" TextColor="Red"/>
                 </StackLayout>
 
                 <Image Source="roomExample.jpg" Margin="0,0,0,15"/>
