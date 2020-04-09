@@ -123,7 +123,7 @@ namespace HotellWhiteIsaac.ViewModels
 
             if (result)
             {
-                App.Current.MainPage.DisplayAlert("Success!", "Thank you for your order\nYou will now be redirected to your profile page.", "ok");
+                App.Current.MainPage.DisplayAlert("Success!", "Thank you booking with Isaac Hotel White\nYou will now be redirected to your profile page.", "ok");
                 App.Current.MainPage.Navigation.PushAsync(new ProfilePage());
             }
             else

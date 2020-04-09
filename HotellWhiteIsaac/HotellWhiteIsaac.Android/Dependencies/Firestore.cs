@@ -22,7 +22,6 @@ namespace HotellWhiteIsaac.Droid.Dependencies
 {
     class Firestore : Java.Lang.Object, IFirestore, IOnCompleteListener
     {
-        //Hanterar profiles
         List<Profile> profiles;
         List<Room> rooms;
         List<Booking> bookings;
@@ -126,7 +125,7 @@ namespace HotellWhiteIsaac.Droid.Dependencies
             var query = collection;
             query.Get().AddOnCompleteListener(this);
 
-            for (int i = 0; i < 35; i++)
+            for (int i = 0; i < 25; i++)
             {
                 await System.Threading.Tasks.Task.Delay(100);
                 if (hasReadRooms)

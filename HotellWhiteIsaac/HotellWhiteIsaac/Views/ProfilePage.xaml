@@ -38,6 +38,7 @@
             <!--<Label Text="Name: " FontSize="20"/>
             <Label Text="Email: " FontSize="20" Margin="0,10,0,0"/>-->
         
+        
         <!--NEW BOOK BUTTON-->
         <StackLayout Margin="10,5,10,0">
             <Button x:Name="ShowAvailableRoomsButton" 
@@ -50,7 +51,8 @@
                         Text="My Bookings"
                         BackgroundColor="#f5737c"
                         TextColor="White"
-                        CornerRadius="20"/>
+                        CornerRadius="20"
+                        Clicked="UpdateInfoButton_Clicked"/>
 
             </StackLayout>
     </StackLayout>

@@ -38,5 +38,10 @@ namespace HotellWhiteIsaac.Views
         {
             Navigation.PushAsync(new RoomsPage());
         }
+
+        private void UpdateInfoButton_Clicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage.DisplayAlert("INFO!", "This function is still under progress. Make sure to check it out later.", "OK");
+        }
     }
 }

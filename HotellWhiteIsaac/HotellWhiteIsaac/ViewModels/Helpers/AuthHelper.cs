@@ -39,7 +39,7 @@ namespace HotellWhiteIsaac.ViewModels.Helpers
                 bool hasLoggedIn = await auth.AuthenticateUser(email, password);
                 if (hasLoggedIn == true)
                 {
-                    await App.Current.MainPage.DisplayAlert("Login successfully","yay dude", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Login successfully","You are now beeing redirected to your profile page.", "Ok");
                 }
                 return hasLoggedIn;
             }
